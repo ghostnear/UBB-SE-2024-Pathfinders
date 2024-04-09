@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,10 +8,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using board_games.Model.GameOfLife;
-using board_games.Model.GameOfLife.Cards;
-using board_games.Model.GameOfLife.Cards.Ability;
-using board_games.Model.GameOfLife.Cards.Effect;
 
 namespace board_games
 {
@@ -23,16 +18,6 @@ namespace board_games
     {
         public MainWindow()
         {
-            BadCardNegationAbility ability = new BadCardNegationAbility(CardType.Health, 10, 5);
-            Debug.Assert(ability.TurnsLeft == 10);
-            Debug.Assert(ability.cooldown == 5);
-            Debug.Assert(ability.GetTypeToNegate() == CardType.Health);
-
-            IAbility teleportAbility = new TeleportAbility();
-            Debug.Assert(TeleportAbility.Cooldown == 1);
-
-            
-
             InitializeComponent();
         }
     }
