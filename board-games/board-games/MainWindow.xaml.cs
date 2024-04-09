@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using board_games.Model.GameOfLife;
 using board_games.Model.GameOfLife.Cards;
 using board_games.Model.GameOfLife.Cards.Ability;
+using board_games.Model.GameOfLife.Cards.Effect;
 
 namespace board_games
 {
@@ -29,6 +30,8 @@ namespace board_games
 
             IAbility teleportAbility = new TeleportAbility();
             Debug.Assert(TeleportAbility.Cooldown == 1);
+
+            
 
             InitializeComponent();
         }

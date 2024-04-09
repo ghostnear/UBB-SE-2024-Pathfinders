@@ -9,10 +9,10 @@ namespace board_games.Model.GameOfLife.Cards
 {
     public class Card
     {
-        private CardType _type { get; }
-        private Texture _texture { get; }
-        private IEffect _effect { get; }
-        private Boolean _isConsideredBad { get; }
+        private CardType _type;
+        private Texture _texture;
+        private IEffect _effect;
+        private Boolean _isConsideredBad;
 
         public Card(CardType type, Texture texture, IEffect effect, Boolean isConsideredBad)
         {
@@ -21,5 +21,26 @@ namespace board_games.Model.GameOfLife.Cards
             this._effect = effect;
             this._isConsideredBad = isConsideredBad;
         }
+
+        public CardType GetType()
+        {
+            return _type;
+        }
+
+        public Texture GetTexture()
+        {
+            return _texture;
+        }
+        
+        public IEffect GetEffect()
+        {
+            return _effect;
+        }
+
+        public Boolean IsConsideredBad()
+        {
+            return _isConsideredBad;
+        }
+
     }
 }

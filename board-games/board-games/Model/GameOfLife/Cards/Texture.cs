@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace board_games.Model.GameOfLife.Cards
 {
-    // implemented by another team (?)
+    /// <summary>
+    /// will be implemented by another team, not by Pathfinders (?)
+    /// </summary>
     public class Texture
     {
         public Texture()
