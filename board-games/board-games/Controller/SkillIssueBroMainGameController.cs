@@ -293,7 +293,7 @@ namespace board_games.Controller
 
                 if (currentTileId <= 25 && newTileId >= 25)
                 {
-                    if (diceValue <= 4)
+                    if (newTileId-26+60 <= 63)
                         return newTileId - 26 + 60;
                     else return currentTileId;
                 }
