@@ -298,11 +298,15 @@ namespace board_games.Controller
                     else return currentTileId;
                 }
                 
-                
             }
             if(pawnColor == "g")
             {
-
+                if (currentTileId <= 35 && newTileId >= 35)
+                {
+                    if (newTileId - 36 + 64 <= 67)
+                        return newTileId - 36 + 64;
+                    else return currentTileId;
+                }
             }
             if(pawnColor == "r")
             {

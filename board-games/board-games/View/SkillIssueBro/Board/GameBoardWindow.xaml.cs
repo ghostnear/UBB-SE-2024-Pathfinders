@@ -196,13 +196,13 @@ namespace board_games.View.SkillIssueBro.Board
 
         private void TestPawnMove()
         {
-            skillIssueBroController.MovePawn(4, 10);
-            skillIssueBroController.MovePawn(4, 29);
+            skillIssueBroController.MovePawn(8, 10);
+            skillIssueBroController.MovePawn(8, 25);
 
             //ClearPawnChildren();
             SpawnPawns(skillIssueBroController.GetPawns());
 
-            skillIssueBroController.MovePawn(4, 5);
+            skillIssueBroController.MovePawn(8, 9);
 
             SpawnPawns(skillIssueBroController.GetPawns());
         }
