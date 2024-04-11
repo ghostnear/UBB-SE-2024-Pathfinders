@@ -49,7 +49,13 @@ namespace board_games.View.SkillIssueBro.Board
             Loaded += GameBoardWindow_Loaded;
             column1.rollButton.ButtonClicked += RollButton_Clicked;
             gameBoard.PawnClicked += OnPawnClicked;
+            
 
+        }
+
+        private void OnPawnKilled(object sender)
+        {
+            SpawnPawns(skillIssueBroController.GetPawns());
         }
 
         private void ShowCurrentPlayerColorEllipse()
@@ -243,6 +249,8 @@ namespace board_games.View.SkillIssueBro.Board
             skillIssueBroController = new SkillIssueBroMainGameController(_players);
             SpawnPawns(skillIssueBroController.GetPawns());
             ShowCurrentPlayerColorEllipse();
+
+            skillIssueBroController.PawnKilled += OnPawnKilled;
         }
 
         private void SpawnPawns(List<Pawn> pawnsToSpawn)
