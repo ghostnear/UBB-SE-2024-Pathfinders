@@ -2,6 +2,7 @@
 using board_games.Model.CommonEntities;
 using board_games.Model.SkillIssueBroEntities;
 using board_games.View.SkillIssueBro.Dice;
+using board_games.View.SkillIssueBro.Pawns;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -56,6 +57,9 @@ namespace board_games.View.SkillIssueBro.Board
 
 
             // actually move the pawn
+            TestPawnMove();
+
+            
         }
 
         private void GenerateLeftDice(int value)
@@ -187,5 +191,38 @@ namespace board_games.View.SkillIssueBro.Board
             }
         }
 
+
+        
+
+        private void TestPawnMove()
+        {
+            skillIssueBroController.MovePawn(4, 10);
+            skillIssueBroController.MovePawn(4, 29);
+
+            //ClearPawnChildren();
+            SpawnPawns(skillIssueBroController.GetPawns());
+
+            skillIssueBroController.MovePawn(4, 5);
+
+            SpawnPawns(skillIssueBroController.GetPawns());
+        }
+
+
+        private void ClearPawnChildren()
+        {
+            
+            for (int i = gameBoard.MainGrid.Children.Count - 1; i >= 0; i--)
+            {
+                
+                if (gameBoard.MainGrid.Children[i] is PawnBlue ||
+                    gameBoard.MainGrid.Children[i] is PawnYellow ||
+                    gameBoard.MainGrid.Children[i] is PawnGreen ||
+                    gameBoard.MainGrid.Children[i] is PawnRed)
+                {
+                   
+                    gameBoard.MainGrid.Children.RemoveAt(i);
+                }
+            }
+        }
     }
 }

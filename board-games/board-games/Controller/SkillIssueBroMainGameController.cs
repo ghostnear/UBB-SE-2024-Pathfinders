@@ -208,7 +208,7 @@ namespace board_games.Controller
             {
                 siBTiles.Add(new SiBTile(count++, i, 6));
             }
-            siBTiles.Add(new SiBTile(count++, 5, 10));
+            siBTiles.Add(new SiBTile(count++, 10, 5));
             //the crosses
             //the blue cross
             for (i = 9; i >= 6; i--)
@@ -226,7 +226,7 @@ namespace board_games.Controller
                 siBTiles.Add(new SiBTile(count++, i, 5));
             }
             //the red cross
-            for (i = 6; i <= 9; i++)
+            for (i = 9; i >= 6; i--)
             {
                 siBTiles.Add(new SiBTile(count++, 5, i));
             }
@@ -250,5 +250,105 @@ namespace board_games.Controller
             Dice dice = _skillIssueBoard.GetDice();
             return dice.RollDice();
         }
+
+        private int ComputeNewTileId(string pawnColor, int currentTileId, int diceValue)
+        {
+            //16 first path tile
+            if (currentTileId <= 3)
+            {
+                //blue corner
+                return diceValue + 16 - 1;
+
+
+            }
+            else if(currentTileId<=7) {
+                //yellow corner
+                return diceValue + 26 - 1;
+            }
+            else if (currentTileId <= 11)
+            {
+                return diceValue + 36 - 1;
+            }
+            else if(currentTileId <= 15)
+            {
+                return diceValue + 46 - 1;
+            }
+
+
+            // compute possible new tile
+            int newTileId = currentTileId + diceValue;
+
+            // should enter cross
+            if(pawnColor == "b")
+            {
+                if(newTileId >= 56 && newTileId <=59)
+                {
+                    return newTileId;
+                }
+               
+            }
+            if(pawnColor == "y")
+            {
+
+
+                if (currentTileId <= 25 && newTileId >= 25)
+                {
+                    if (diceValue <= 4)
+                        return newTileId - 26 + 60;
+                    else return currentTileId;
+                }
+                
+                
+            }
+            if(pawnColor == "g")
+            {
+
+            }
+            if(pawnColor == "r")
+            {
+
+            }    
+
+            // no extreme cases
+            if(newTileId > 55)
+            {
+                newTileId = newTileId % 56 + 16;
+            }
+
+            //temp
+            return newTileId;
+            
+        }
+
+        private string PawnColor(int pawnId)
+        {
+           if(pawnId < 4)
+            {
+                return "b";
+            }
+           else if(pawnId < 8)
+            {
+                return "y";
+            }
+           else if(pawnId < 12)
+            {
+                return "g";
+            }
+            return "r";
+        }
+
+        public void MovePawn(int pawnId, int diceValue)
+        {
+            //lmoa
+            int currentTileId = _pawns[pawnId].GetOccupiedTile().GetTileId();
+            int newTileId = ComputeNewTileId(PawnColor(pawnId), currentTileId, diceValue);
+
+            SiBTile newTile = _sibTiles[newTileId];
+            _pawns[pawnId].ChangeTile(newTile);
+
+            // update in game state whatever
+        }
+
+
     }
 }
