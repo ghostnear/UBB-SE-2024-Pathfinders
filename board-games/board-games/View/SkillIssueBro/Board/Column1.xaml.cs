@@ -24,5 +24,13 @@ namespace board_games.View.SkillIssueBro.Board
         {
             InitializeComponent();
         }
+
+        private void RollButton_Click(object sender, RoutedEventArgs e)
+        {
+            rollButton.Visibility = Visibility.Collapsed;
+            // Show the other element (replace 'otherElement' with the actual name of the element you want to show)
+            // For example:
+            // otherElement.Visibility = Visibility.Visible;
+        }
     }
 }

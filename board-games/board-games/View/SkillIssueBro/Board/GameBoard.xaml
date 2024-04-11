@@ -7,7 +7,7 @@
           
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Height="1080" Background="Ivory">
+    <Grid x:Name="MainGrid" Height="1080" Background="Ivory">
 
         <Grid.RowDefinitions >
             <RowDefinition/>
@@ -81,10 +81,10 @@
             </Path.RenderTransform>
         </Path>
 
-        <Tiles:CircleRed  Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Tiles:CircleRed HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"/>
-        <Tiles:CircleRed HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
-        <Tiles:CircleRed HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
+        <Tiles:CircleYellow  Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Tiles:CircleYellow HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"/>
+        <Tiles:CircleYellow HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+        <Tiles:CircleYellow HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
         <Tiles:CircleGreen HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="10" Grid.Row="0"/>
         <Tiles:CircleGreen HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="10" Grid.Row="1"/>
         <Tiles:CircleGreen HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="9" Grid.Row="0"/>
@@ -97,8 +97,7 @@
         <Tiles:CircleRed HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="10" Grid.Row="9"/>
         <Tiles:CircleRed HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="9" Grid.Row="10"/>
         <Tiles:CircleRed HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="9" Grid.Row="9"/>
-        <Tiles:CircleRed HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
-        <Tiles:CircleRed HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
+        
         <Tiles:CircleYellow  Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Tiles:CirclePath HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="5"/>
         <Tiles:CirclePath HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="6"/>

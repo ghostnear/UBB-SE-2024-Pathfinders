@@ -17,9 +17,9 @@
         </Grid.RowDefinitions>
 
         <local:LeaveButton></local:LeaveButton>
-        <Dice:DiceWithNumber6 Grid.Row="1"></Dice:DiceWithNumber6>
-        <Tiles:CircleBlue Grid.Row="2"></Tiles:CircleBlue>
-        <Pawns:PawnBlue  Grid.Row="2"></Pawns:PawnBlue>
+        <!--<Dice:DiceWithNumber6 Grid.Row="1"></Dice:DiceWithNumber6>-->
+        <local:RollButton x:Name="rollButton" Grid.Row="1" Click="RollButton_Click"></local:RollButton>
+        
 
 
 

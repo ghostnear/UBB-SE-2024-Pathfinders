@@ -15,9 +15,9 @@
                 <ColumnDefinition Width="1082"></ColumnDefinition>
                 <ColumnDefinition ></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <local:Column1/>
-            <local:GameBoard Grid.Column="1" Width="1082" Height="1080"></local:GameBoard>
-            <local:Column2 Grid.Column="2"/>
+            <local:Column1 x:Name="column1"/>
+            <local:GameBoard x:Name="gameBoard" Grid.Column="1" Width="1082" Height="1080"></local:GameBoard>
+            <local:Column2 x:Name="column2" Grid.Column="2"/>
         </Grid>
     </Viewbox>
 </UserControl>
