@@ -291,7 +291,7 @@ namespace board_games.Controller
             {
 
 
-                if (currentTileId <= 25 && newTileId >= 25)
+                if (currentTileId <= 25 && newTileId > 25)
                 {
                     if (newTileId-26+60 <= 63)
                         return newTileId - 26 + 60;
@@ -301,7 +301,7 @@ namespace board_games.Controller
             }
             if(pawnColor == "g")
             {
-                if (currentTileId <= 35 && newTileId >= 35)
+                if (currentTileId <= 35 && newTileId > 35)
                 {
                     if (newTileId - 36 + 64 <= 67)
                         return newTileId - 36 + 64;
@@ -310,7 +310,12 @@ namespace board_games.Controller
             }
             if(pawnColor == "r")
             {
-
+                if (currentTileId <= 45 && newTileId > 45)
+                {
+                    if (newTileId - 46 + 68 <= 71)
+                        return newTileId - 46 + 68;
+                    else return currentTileId;
+                }
             }    
 
             // no extreme cases
