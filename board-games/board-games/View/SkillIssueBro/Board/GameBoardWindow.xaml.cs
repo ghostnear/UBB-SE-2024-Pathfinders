@@ -27,6 +27,9 @@ namespace board_games.View.SkillIssueBro.Board
     /// </summary>
     public partial class GameBoardWindow : UserControl
     {
+        private int _leftDiceValue = 0;
+        private int _rightDiceValue = 0;
+
         // temporary hardcoded players
         private List<Player> _players = new List<Player> { 
             new Player(1, "Egg"),
@@ -47,28 +50,26 @@ namespace board_games.View.SkillIssueBro.Board
 
         private void OnPawnClicked(object sender, PawnClickedEventArgs e)
         {
-            // Handle the pawn click event here
+            
             int column = e.Column;
             int row = e.Row;
 
-            MessageBox.Show($"Pawn clicked at column {column}, row {row}");
+            int pawnId = skillIssueBroController.DeterminePawnIdBasedOnColumnAndRow(column, row);
+            skillIssueBroController.MovePawn(pawnId, _leftDiceValue + _rightDiceValue);
+
+            ClearPawnChildren();
+            SpawnPawns(skillIssueBroController.GetPawns());
         }
 
 
         private void RollButton_Clicked(object sender, EventArgs e)
         {
-            //skillIssueBroController.HandleRollButtonClick();
-            int valueOfLeftDice = skillIssueBroController.RollDice();
-            int valueOfRightDice = skillIssueBroController.RollDice();
+            _leftDiceValue = skillIssueBroController.RollDice();
+            _rightDiceValue = skillIssueBroController.RollDice();
             
             // show the dice in the view
-            GenerateLeftDice(valueOfLeftDice);
-            GenerateRightDice(valueOfRightDice);
-
-
-            // actually move the pawn
-            TestPawnMove();
-
+            GenerateLeftDice(_leftDiceValue);
+            GenerateRightDice(_rightDiceValue);
             
         }
 

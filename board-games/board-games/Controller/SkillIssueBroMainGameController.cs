@@ -363,6 +363,20 @@ namespace board_games.Controller
             return playerIndex;
         }
 
+        public int DeterminePawnIdBasedOnColumnAndRow(int column, int row)
+        {
+            foreach(Pawn pawn in _pawns)
+            {
+                Tile occupiedTile = pawn.GetOccupiedTile();
+                if(occupiedTile.GetCenterXPosition() == column && occupiedTile.GetCenterYPosition() == row)
+                {
+                    return pawn.GetPawnId();
+                }
+                
+            }
+            return 0;
+        }
+
         public void MovePawn(int pawnId, int diceValue)
         {
 

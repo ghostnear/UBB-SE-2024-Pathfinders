@@ -49,7 +49,7 @@ namespace board_games.View.SkillIssueBro.Board
                         int column = Grid.GetColumn(pawn);
                         int row = Grid.GetRow(pawn);
 
-                        MessageBox.Show($"Pawn clicked at column {column}, row {row}");
+                        PawnClicked?.Invoke(this, new PawnClickedEventArgs(column, row));
                     }
                 }
             }
