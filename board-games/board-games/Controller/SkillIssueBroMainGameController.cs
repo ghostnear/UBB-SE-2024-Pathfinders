@@ -257,6 +257,7 @@ namespace board_games.Controller
 
         private int ComputeNewTileId(string pawnColor, int currentTileId, int diceValue)
         {
+
             //16 first path tile
             if (currentTileId <= 3)
             {
@@ -363,7 +364,7 @@ namespace board_games.Controller
             return playerIndex;
         }
 
-        public int DeterminePawnIdBasedOnColumnAndRow(int column, int row)
+        private int DeterminePawnIdBasedOnColumnAndRow(int column, int row)
         {
             foreach(Pawn pawn in _pawns)
             {
@@ -377,11 +378,49 @@ namespace board_games.Controller
             return 0;
         }
 
-        public void MovePawn(int pawnId, int diceValue)
+        private Tile FindEmptyHomeTile(int playerId)
         {
 
+        }
+
+        private void KillPawn()
+        {
+
+        }
+
+        private void MovePawn(int pawnId, int leftDiceValue, int rightDiceValue, int playerId)
+        {
+
+            int diceValue = leftDiceValue + rightDiceValue;
+            if(diceValue == 0)
+            {
+                throw new Exception("Can't move pawn yet");
+            }
+
+            if (_pawns[pawnId].GetPlayer().GetPlayerId() != playerId)
+            {
+                throw new Exception("Not your pawn :(");
+            }
+
+
             int currentTileId = _pawns[pawnId].GetOccupiedTile().GetTileId();
+
+            if(currentTileId < 16)
+            {
+                // pawn still on home tiles
+                if(rightDiceValue != 6 || leftDiceValue != 6)
+                {
+                    throw new Exception("You have to roll two 6s!");
+                }
+            }
+
             int newTileId = ComputeNewTileId(PawnColor(pawnId), currentTileId, diceValue);
+
+            if(newTileId == currentTileId)
+            {
+                throw new Exception("Pawn cannot go futher");
+            }
+
 
             SiBTile newTile = _sibTiles[newTileId];
             _pawns[pawnId].ChangeTile(newTile);
@@ -389,6 +428,39 @@ namespace board_games.Controller
             _skillIssueBoard.UpdatePawns(_pawns);
         }
 
+        public void MovePawnBasedOnClick(int column, int row, int leftDiceValue, int rightDiceValue)
+        {
+            int pawnId = DeterminePawnIdBasedOnColumnAndRow(column, row);
 
+            
+
+            MovePawn(pawnId, leftDiceValue, rightDiceValue, _players[_currentPlayerIndex].GetPlayerId());
+        }
+
+        public void ChangeCurrentPlayer()
+        {
+            _currentPlayerIndex = DetermineNextPlayerIndex();
+        }
+
+        public string GetCurrentPlayerColor()
+        {
+            switch (_currentPlayerIndex)
+            {
+                case 0:
+                    return "b";
+                    break;
+                case 1:
+                    return "y";
+                    break;
+                case 2:
+                    return "g";
+                    break;
+                case 3:
+                    return "r";
+                    break;
+                default:
+                    return "none";
+            }
+        }
     }
 }
