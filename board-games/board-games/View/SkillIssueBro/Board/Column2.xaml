@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:board_games.View.SkillIssueBro.Board"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Lavender" Height="1080" >
+    <Grid x:Name="column2Grid" Background="Lavender" Height="1080" >
         <Grid.RowDefinitions>
             <RowDefinition Height="356.4"></RowDefinition>
             <RowDefinition Height="367.2" ></RowDefinition>

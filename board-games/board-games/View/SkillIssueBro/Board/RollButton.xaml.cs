@@ -23,7 +23,7 @@ namespace board_games.View.SkillIssueBro.Board
     
     public partial class RollButton : UserControl
     {
-        public event EventHandler Click;
+        public event EventHandler ButtonClicked;
         public RollButton()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace board_games.View.SkillIssueBro.Board
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Click?.Invoke(this, EventArgs.Empty);
+            ButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

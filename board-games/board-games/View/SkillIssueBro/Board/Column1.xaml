@@ -9,7 +9,7 @@
              xmlns:Tiles="clr-namespace:board_games.View.SkillIssueBro.Tiles"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="2000">
-    <Grid Background="Lavender" Height="1080" >
+    <Grid x:Name="column1Grid" Background="Lavender" Height="1080" >
         <Grid.RowDefinitions>
             <RowDefinition Height="356.4"></RowDefinition>
             <RowDefinition Height="367.2" ></RowDefinition>
@@ -18,7 +18,7 @@
 
         <local:LeaveButton></local:LeaveButton>
         <!--<Dice:DiceWithNumber6 Grid.Row="1"></Dice:DiceWithNumber6>-->
-        <local:RollButton x:Name="rollButton" Grid.Row="1" Click="RollButton_Click"></local:RollButton>
+        <local:RollButton x:Name="rollButton" Grid.Row="1"></local:RollButton>
         
 
 
