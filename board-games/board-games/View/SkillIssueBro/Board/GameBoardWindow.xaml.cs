@@ -42,6 +42,16 @@ namespace board_games.View.SkillIssueBro.Board
             InitializeComponent();
             Loaded += GameBoardWindow_Loaded;
             column1.rollButton.ButtonClicked += RollButton_Clicked;
+            gameBoard.PawnClicked += OnPawnClicked;
+        }
+
+        private void OnPawnClicked(object sender, PawnClickedEventArgs e)
+        {
+            // Handle the pawn click event here
+            int column = e.Column;
+            int row = e.Row;
+
+            MessageBox.Show($"Pawn clicked at column {column}, row {row}");
         }
 
 

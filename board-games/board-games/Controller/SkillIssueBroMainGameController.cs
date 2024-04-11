@@ -15,15 +15,19 @@ namespace board_games.Controller
         private List<SiBTile> _sibTiles;
         private List<Pawn> _pawns;
         private int generatedPawnIds = 0; // temporary solution, fix if needed or delete comment
+        private int _currentPlayerIndex;
         public SkillIssueBroMainGameController(List<Player> players)
         {
             _players = players;
             _sibTiles =  GenerateTiles();
             _pawns = new List<Pawn>();
             GeneratePawns();
+
             // id is subject to change; can do an insert first and then retrieve the id (bcuz identity) 
             // and create the object
-            _skillIssueBoard = new SkillIssueBoard(1, _sibTiles, _pawns, _players,1);
+
+            _currentPlayerIndex = DetermineStartingPlayerIndex();
+            _skillIssueBoard = new SkillIssueBoard(1, _sibTiles, _pawns, _players,_currentPlayerIndex);
         }
 
         private List<Pawn> GenerateBluePawns()
@@ -324,7 +328,7 @@ namespace board_games.Controller
                 newTileId = newTileId % 56 + 16;
             }
 
-            //temp
+            
             return newTileId;
             
         }
@@ -346,16 +350,29 @@ namespace board_games.Controller
             return "r";
         }
 
+        private int DetermineNextPlayerIndex()
+        {
+            return (_currentPlayerIndex + 1) % _players.Count;
+        }
+
+        private int DetermineStartingPlayerIndex()
+        {
+            Random random = new Random();
+            int playerIndex = random.Next(0, _players.Count-1);
+
+            return playerIndex;
+        }
+
         public void MovePawn(int pawnId, int diceValue)
         {
-            //lmoa
+
             int currentTileId = _pawns[pawnId].GetOccupiedTile().GetTileId();
             int newTileId = ComputeNewTileId(PawnColor(pawnId), currentTileId, diceValue);
 
             SiBTile newTile = _sibTiles[newTileId];
             _pawns[pawnId].ChangeTile(newTile);
 
-            // update in game state whatever
+            _skillIssueBoard.UpdatePawns(_pawns);
         }
 
 
