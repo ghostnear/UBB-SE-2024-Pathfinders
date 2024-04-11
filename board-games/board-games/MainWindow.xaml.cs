@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using board_games.View;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,12 @@ namespace board_games
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new StartView());
         }
     }
 }
