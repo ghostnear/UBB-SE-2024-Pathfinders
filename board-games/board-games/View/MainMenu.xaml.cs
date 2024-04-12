@@ -1,4 +1,5 @@
-﻿using System;
+﻿using board_games.View.SkillIssueBro.Menus;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,23 +14,35 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace board_games.View.SkillIssueBro.Menus
+namespace board_games.View
 {
     /// <summary>
-    /// Interaction logic for SkillIssueBroNumberPlayers.xaml
+    /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class SkillIssueBroNumberPlayers : Page
+    public partial class MainMenu : Page
     {
-        public SkillIssueBroNumberPlayers()
+        public MainMenu()
         {
             InitializeComponent();
         }
 
-        private void OnBackButtonClicked(object sender, RoutedEventArgs e)
+        private void RadioButton_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
+        }
+        private void OnSiBButtonClicked(object sender, RoutedEventArgs e)
+        {
+   
 
             this.NavigationService.Navigate(new SkillIssueBroMainMenu());
         }
+
+        private void OnGoLButtonClicked(object sender, RoutedEventArgs e)
+        {
+
+
+            this.NavigationService.Navigate(new StartView());
+        }
+
     }
 }
