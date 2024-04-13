@@ -31,7 +31,7 @@ namespace board_games
         private const string tileNameCommonRoot = "Tile";
         private int _spinnerValue;
         private GameOfLifeBoard _gameOfLifeBoard = new GameOfLifeBoard(123);
-        private BitmapImage _spinnerDisplay = new BitmapImage(new Uri("D:/board-games/board-games/board-games/Resources/SpinnerValues/Spinner10.png", UriKind.Absolute));
+        private BitmapImage _spinnerDisplay;
         //new BitmapImage(new Uri("../../Resources/SpinnerValues/Spinner1.png", UriKind.Relative));
         private const string commonFileRoot = "../../Resources/SpinnerValues/Spinner";
         public GameOfLife_MainWindow()
