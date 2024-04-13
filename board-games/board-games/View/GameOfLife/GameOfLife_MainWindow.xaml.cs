@@ -1,4 +1,4 @@
-﻿using board_games.Model.CommonEntities;
+using board_games.Model.CommonEntities;
 using board_games.Model.GameOfLife;
 using board_games.Model.GameOfLife.Cards;
 using board_games.View;
@@ -113,6 +113,17 @@ namespace board_games
             this.NavigationService.Navigate(new HostJoinView());
         }
 
+
+        private void DisplayCard(string Category)
+        {
+            // if player is on a special tile
+            // from Category, generate a random number (associated to a card file name)
+            // display the card
+            // tap somewhere (x? outside card?) to resume game
+        }
+
+
+
         private void SpinnerActionArea_MouseUp(object sender, MouseButtonEventArgs e)
         {
             _spinnerValue = _gameOfLifeBoard.SpinSpinner();
@@ -133,3 +144,5 @@ namespace board_games
     }
 
 }
+
+
