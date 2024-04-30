@@ -1,10 +1,5 @@
 ﻿using board_games.Model.CommonEntities;
 using board_games.Model.SkillIssueBroEntities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace board_games.Controller
 {
@@ -152,8 +147,6 @@ namespace board_games.Controller
                     _pawns.Add(redPawn);
                 }
             }
-
-
         }
 
         private List<SiBTile> GenerateTiles()
@@ -577,16 +570,12 @@ namespace board_games.Controller
             {
                 case 0:
                     return "b";
-                    break;
                 case 1:
                     return "y";
-                    break;
                 case 2:
                     return "g";
-                    break;
                 case 3:
                     return "r";
-                    break;
                 default:
                     return "none";
             }
