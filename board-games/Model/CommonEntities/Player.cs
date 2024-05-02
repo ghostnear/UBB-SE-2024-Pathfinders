@@ -2,22 +2,22 @@
 {
     internal class Player
     {
-        private int _playerId;
-        private string _playerName;
+        private int id;
+        private string name;
 
         public Player(int playerId, string playerName)
         {
-            _playerId = playerId;
-            _playerName = playerName;
+            id = playerId;
+            name = playerName;
         }
 
         public string GetPlayerName()
         {
-            return _playerName;
+            return name;
         }
-        public int GetPlayerId() {  return _playerId; }
-
-        /* todo: add completed achievements */
-
+        public int GetPlayerId()
+        {
+            return id;
+        }
     }
 }

@@ -2,19 +2,28 @@
 {
     internal class Tile
     {
-        private int _tileId;
-        private float _centerXPosition;
-        private float _centerYPosition;
+        private int id;
+        private float centerPositionX;
+        private float centerPositionY;
 
         public Tile(int tileId, float centerXPosition, float centerYPosition)
         {
-            _tileId = tileId;
-            _centerXPosition = centerXPosition;
-            _centerYPosition = centerYPosition;
+            id = tileId;
+            centerPositionX = centerXPosition;
+            centerPositionY = centerYPosition;
         }
 
-        public float GetCenterXPosition() { return _centerXPosition; }
-        public float GetCenterYPosition() { return _centerYPosition; }
-        public int GetTileId() { return _tileId; }
+        public float GetCenterXPosition()
+        {
+            return centerPositionX;
+        }
+        public float GetCenterYPosition()
+        {
+            return centerPositionY;
+        }
+        public int GetTileId()
+        {
+            return id;
+        }
     }
 }
