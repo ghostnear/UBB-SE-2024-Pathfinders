@@ -2,7 +2,7 @@
 
 namespace BoardGames.Model.GameOfLife
 {
-    internal class GameOfLifeBoard : Games
+    public class GameOfLifeBoard : Games
     {
         private readonly Spinner spinner;
         private List<Player> players;

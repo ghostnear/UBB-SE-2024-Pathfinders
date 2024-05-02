@@ -2,7 +2,7 @@
 {
     public class Spinner
     {
-        private static readonly IDictionary<int, int> ResultProbabilitiesAsPercentages = new Dictionary<int, int>()
+        public static readonly IDictionary<int, int> ResultProbabilitiesAsPercentages = new Dictionary<int, int>()
         {
             [1] = 19,
             [2] = 17,
