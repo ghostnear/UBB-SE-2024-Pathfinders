@@ -16,7 +16,7 @@ namespace board_games.View.SkillIssueBro.Menus
 
         private void OnClickJoin(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new GameBoardWindow());
+            NavigationService.Navigate(new GameBoardWindow());
         }
     }
 }

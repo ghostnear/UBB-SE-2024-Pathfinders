@@ -1,9 +1,4 @@
 ﻿using board_games.Model.CommonEntities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace board_games.Model.SkillIssueBroEntities
 {
@@ -15,7 +10,7 @@ namespace board_games.Model.SkillIssueBroEntities
         private List<SiBTile> _sibTiles;
         private Dice _sixSidedDice;
 
-        public SkillIssueBoard(int gameId, List<SiBTile> tiles,List<Pawn> pawns, List<Player> players, int idOfFirstPlayerToRoll):base(gameId)
+        public SkillIssueBoard(List<SiBTile> tiles,List<Pawn> pawns, List<Player> players, int idOfFirstPlayerToRoll)
         {
             _sibTiles = tiles;
             _players = players;
@@ -27,21 +22,6 @@ namespace board_games.Model.SkillIssueBroEntities
         public override List<Player> GetPlayers()
         {
             return _players;
-        }
-
-        public override void SaveGameState()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void SetState()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void UpdateLeaderboard(Leaderboard leaderboard)
-        {
-            throw new NotImplementedException();
         }
 
         public List<SiBTile> GetTiles()

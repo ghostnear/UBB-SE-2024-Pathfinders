@@ -19,7 +19,7 @@ namespace board_games
         private const int NumberOfGreenTiles = 8;
         private const string tileNameCommonRoot = "Tile";
         private int _spinnerValue;
-        private GameOfLifeBoard _gameOfLifeBoard = new GameOfLifeBoard(123);
+        private GameOfLifeBoard _gameOfLifeBoard = new GameOfLifeBoard();
         private BitmapImage _spinnerDisplay;
         //new BitmapImage(new Uri("../../Resources/SpinnerValues/Spinner1.png", UriKind.Relative));
         private const string commonFileRoot = "../../Resources/SpinnerValues/Spinner";
