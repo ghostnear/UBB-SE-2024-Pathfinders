@@ -1,12 +1,11 @@
-﻿using BoardGames.Controller;
-using BoardGames.Model.CommonEntities;
-using BoardGames.View.SkillIssueBro.Dice;
-using BoardGames.View.SkillIssueBro.Pawns;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-
+using BoardGames.Controller;
+using BoardGames.Model.CommonEntities;
+using BoardGames.View.SkillIssueBro.Dice;
+using BoardGames.View.SkillIssueBro.Pawns;
 namespace BoardGames.View.SkillIssueBro.Board
 {
     /// <summary>
@@ -114,8 +113,7 @@ namespace BoardGames.View.SkillIssueBro.Board
                 {
                     RerollDice();
                 }
-
-            }
+}
             catch (Exception ex)
             {
                 if (ex.Message.Equals("Can't move pawn yet"))
@@ -136,7 +134,7 @@ namespace BoardGames.View.SkillIssueBro.Board
                 }
                 else
                 {
-                    // penalize player to hurry game 
+                    // penalize player to hurry game
                     currentPlayerTries--;
                     if (currentPlayerTries == 0)
                     {

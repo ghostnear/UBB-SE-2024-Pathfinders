@@ -16,7 +16,7 @@ internal class GamesTests
             new Player(2, "Player2")
         };
 
-        mockGame.Setup(g => g.GetPlayers()).Returns(mockPlayers);
+        mockGame.Setup(mockedPlayers => mockedPlayers.GetPlayers()).Returns(mockPlayers);
 
         // Act
         var players = mockGame.Object.GetPlayers();
