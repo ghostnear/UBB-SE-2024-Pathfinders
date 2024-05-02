@@ -1,7 +1,7 @@
-﻿namespace board_games
-{
-    using System.Windows;
+﻿using System.Windows;
 
+namespace board_games
+{
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

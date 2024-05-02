@@ -12,14 +12,11 @@ namespace board_games.Controller
 
         private static int generatedPawnIds = 0;
         private int _currentPlayerIndex;
+
         public delegate void PawnKilledEventHandler(object sender);
         public event PawnKilledEventHandler PawnKilled;
 
-<<<<<<< HEAD:board-games/board-games/Controller/SkillIssueBroMainGameController.cs
-        public SkillIssueBroMainGameController(List<Player> players)
-=======
         public SkillIssueBroGameController(List<Player> players)
->>>>>>> japanese-goblin:board-games/Controller/SkillIssueBroGameController.cs
         {
             _players = players;
             _gameTiles =  GenerateTiles();
@@ -247,12 +244,8 @@ namespace board_games.Controller
             {
                 gameTiles.Add(new SiBTile(count++, 5, index));
             }
-<<<<<<< HEAD:board-games/board-games/Controller/SkillIssueBroMainGameController.cs
-            return siBTiles;
-=======
 
             return gameTiles;
->>>>>>> japanese-goblin:board-games/Controller/SkillIssueBroGameController.cs
         }
         public List<Pawn> GetPawns()
         {

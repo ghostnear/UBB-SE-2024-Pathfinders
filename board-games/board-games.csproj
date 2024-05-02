@@ -86,14 +86,8 @@
 
   </ItemGroup>
 
-<<<<<<< HEAD:board-games/board-games/board-games.csproj
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<CodeAnalysisRuleSet>SE.ruleset</CodeAnalysisRuleSet>
-	</PropertyGroup>
-=======
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	    <CodeAnalysisRuleSet>SE.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
->>>>>>> japanese-goblin:board-games/board-games.csproj
 
 </Project>
