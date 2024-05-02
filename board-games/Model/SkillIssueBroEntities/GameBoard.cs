@@ -2,14 +2,14 @@
 
 namespace BoardGames.Model.SkillIssueBroEntities
 {
-    internal class GameBoard : Games
+    public class GameBoard : Games
     {
         private List<Player> players;
         private List<Pawn> gamePawns;
         private List<GameTile> gameTiles;
         private Dice sixSidedDice;
 
-        public GameBoard(List<GameTile> tiles,List<Pawn> pawns, List<Player> players)
+        public GameBoard(List<GameTile> tiles, List<Pawn> pawns, List<Player> players)
         {
             gameTiles = tiles;
             this.players = players;

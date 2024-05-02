@@ -1,6 +1,6 @@
 ﻿namespace BoardGames.Model.CommonEntities
 {
-    internal class Tile
+    public class Tile
     {
         private int id;
         private float centerPositionX;

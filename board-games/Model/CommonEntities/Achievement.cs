@@ -1,12 +1,12 @@
 ﻿namespace BoardGames.Model.CommonEntities
 {
-    internal enum GameCategory
+    public enum GameCategory
     {
         SkillIssueBro = 0,
         GameOfLife = 1,
     }
 
-    internal class Achievement
+    public class Achievement
     {
         private string name;
         private string description;

@@ -3,7 +3,7 @@ using BoardGames.Model.SkillIssueBroEntities;
 
 namespace BoardGames.Controller
 {
-    internal class SkillIssueBroGameController
+    public class SkillIssueBroGameController
     {
         private GameBoard gameBoard;
         private List<Player> players;

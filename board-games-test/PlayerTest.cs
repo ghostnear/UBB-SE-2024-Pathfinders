@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using board_games.Model.CommonEntities;
+using BoardGames.Model.CommonEntities;
 
 [TestFixture]
 internal class PlayerTests

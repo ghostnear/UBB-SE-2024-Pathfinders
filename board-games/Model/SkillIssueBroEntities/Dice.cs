@@ -1,6 +1,6 @@
 ﻿namespace BoardGames.Model.SkillIssueBroEntities
 {
-    internal class Dice
+    public class Dice
     {
         private Random randomNumberGenerator = new Random();
         public int RollDice()

@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
-using board_games.Model.CommonEntities;
-using board_games.Model.SkillIssueBroEntities;
+using BoardGames.Model.CommonEntities;
 
 [TestFixture]
 internal class PawnTests

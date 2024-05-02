@@ -1,6 +1,6 @@
 ﻿namespace BoardGames.Model.CommonEntities
 {
-    internal class Pawn
+    public class Pawn
     {
         private int id;
         private Tile occupiedTile;
@@ -35,9 +35,15 @@
         {
             return associatedPlayer;
         }
+
         public void SetAssociatedPlayer(Player associatedPlayer)
         {
             this.associatedPlayer = associatedPlayer;
+        }
+
+        public Player GetAssociatedPlayer()
+        {
+            return associatedPlayer;
         }
     }
 }

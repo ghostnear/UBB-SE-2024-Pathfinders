@@ -2,7 +2,7 @@
 
 namespace BoardGames.Model.SkillIssueBroEntities
 {
-    internal class GameTile : Tile
+    public class GameTile : Tile
     {
         private int id;
         private int gridRowIndex;

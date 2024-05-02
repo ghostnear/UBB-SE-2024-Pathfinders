@@ -1,6 +1,6 @@
 ﻿namespace BoardGames.Model.CommonEntities
 {
-    internal class Player
+    public class Player
     {
         private int id;
         private string name;
