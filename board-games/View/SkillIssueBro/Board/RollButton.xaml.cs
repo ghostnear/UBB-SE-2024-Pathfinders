@@ -6,8 +6,6 @@ namespace BoardGames.View.SkillIssueBro.Board
     /// <summary>
     /// Interaction logic for RollButton.xaml
     /// </summary>
-    /// 
-    
     public partial class RollButton : UserControl
     {
         public event EventHandler ButtonClicked;

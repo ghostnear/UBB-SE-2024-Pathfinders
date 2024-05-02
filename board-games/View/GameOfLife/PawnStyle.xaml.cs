@@ -10,7 +10,7 @@ namespace BoardGames.View.GameOfLife
     public partial class PawnStyle : Page
     {
         // !!! After choosing pawn style, change should be sent to DB!
-        private readonly Dictionary<string, Color> _pawnColors = new()
+        private readonly Dictionary<string, Color> pawnColors = new ()
         {
             {"Red", Color.FromRgb(228, 6, 19) },
             {"Orange", Color.FromRgb(255, 133, 0) },
@@ -19,7 +19,7 @@ namespace BoardGames.View.GameOfLife
             {"Blue", Color.FromRgb(83, 74, 153) },
             {"Pink", Color.FromRgb(224, 0, 143) },
         };
-        private int _displayedColorIndex = 0;
+        private int displayedColorIndex = 0;
 
         public PawnStyle()
         {
@@ -29,22 +29,22 @@ namespace BoardGames.View.GameOfLife
 
         private void PawnStyle_Loaded(object sender, RoutedEventArgs e)
         {
-            ChangeDisplayedPawnColor(_displayedColorIndex);
+            ChangeDisplayedPawnColor(displayedColorIndex);
         }
 
         private void ArrowRightButton_Click(object sender, RoutedEventArgs e)
         {
-            _displayedColorIndex = (_displayedColorIndex + 1) % _pawnColors.Count;
-            ChangeDisplayedPawnColor(_displayedColorIndex);
+            displayedColorIndex = (displayedColorIndex + 1) % pawnColors.Count;
+            ChangeDisplayedPawnColor(displayedColorIndex);
         }
         private void ArrowLeftButton_Click(object sender, RoutedEventArgs e)
         {
-            _displayedColorIndex = (_displayedColorIndex - 1 + _pawnColors.Count) % _pawnColors.Count;
-            ChangeDisplayedPawnColor (_displayedColorIndex);
+            displayedColorIndex = (displayedColorIndex - 1 + pawnColors.Count) % pawnColors.Count;
+            ChangeDisplayedPawnColor (displayedColorIndex);
         }
         private void ChangeDisplayedPawnColor(int index)
         {
-            Color newColor = _pawnColors.ElementAt(index).Value;
+            Color newColor = pawnColors.ElementAt(index).Value;
             SolidColorBrush currentBrush = new SolidColorBrush(newColor);
             DisplayedPawn.ChangeBackgroundColor(currentBrush);
         }

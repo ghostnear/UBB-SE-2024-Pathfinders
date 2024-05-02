@@ -1,6 +1,7 @@
 ﻿namespace BoardGames.src.Sort
 {
-    public interface SortStrategy<T> where T : IComparable<T>
+    public interface ISortStrategy<T>
+        where T : IComparable<T>
     {
         void Sort(List<T> data);
     }

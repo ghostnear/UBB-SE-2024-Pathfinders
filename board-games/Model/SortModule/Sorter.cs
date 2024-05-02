@@ -1,17 +1,18 @@
 ﻿namespace BoardGames.src.Sort
 {
-    public class Sorter<T> where T : IComparable<T>
+    public class Sorter<T>
+        where T : IComparable<T>
     {
-        private SortStrategy<T>? _strategy = null;
+        private ISortStrategy<T>? strategy = null;
         public Sorter() { }
-        public void SetStrategy(SortStrategy<T> strategy)
+        public void SetStrategy(ISortStrategy<T> strategy)
         {
-            _strategy = strategy;
+            this.strategy = strategy;
         }
         public void Sort(List<T> data) {
-            if(_strategy != null)
+            if (strategy != null)
             {
-                _strategy.Sort(data);
+                strategy.Sort(data);
             }
             else
             {

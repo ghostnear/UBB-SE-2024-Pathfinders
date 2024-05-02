@@ -14,13 +14,14 @@ namespace BoardGames.View.SkillIssueBro.Board
     /// </summary>
     public partial class GameBoardWindow : UserControl
     {
-        private int _leftDiceValue = 0;
-        private int _rightDiceValue = 0;
-        private UIElement _leftDice;
-        private UIElement _rightDice;
-        private int _currentPlayerTries = 2;
+        private int leftDiceValue = 0;
+        private int rightDiceValue = 0;
+        private UIElement leftDice;
+        private UIElement rightDice;
+        private int currentPlayerTries = 2;
         // temporary hardcoded players
-        private List<Player> _players = new List<Player> { 
+        private List<Player> players = new List<Player>
+        {
             new Player(1, "Egg"),
             new Player(2, "Mario"),
             new Player(3, "Gigi"),
@@ -34,8 +35,6 @@ namespace BoardGames.View.SkillIssueBro.Board
             Loaded += GameBoardWindow_Loaded;
             column1.rollButton.ButtonClicked += RollButton_Clicked;
             gameBoard.PawnClicked += OnPawnClicked;
-            
-
         }
 
         private void OnPawnKilled(object sender)
@@ -48,7 +47,8 @@ namespace BoardGames.View.SkillIssueBro.Board
             string color = skillIssueBroController.GetCurrentPlayerColor();
             var ellipse = new Ellipse();
             Color playerColor;
-            switch (color){
+            switch (color)
+            {
                 case "b":
                     playerColor = Colors.Blue; break;
                 case "y":
@@ -65,19 +65,18 @@ namespace BoardGames.View.SkillIssueBro.Board
             ellipse.Height = 100;
             ellipse.Width = 100;
             column2.column2Grid.Children.Add(ellipse);
-            
         }
 
         private void HideDice()
         {
-            column1.column1Grid.Children.Remove(_leftDice);
-            column2.column2Grid.Children.Remove(_rightDice);
+            column1.column1Grid.Children.Remove(leftDice);
+            column2.column2Grid.Children.Remove(rightDice);
         }
 
         private void RerollDice()
         {
-            _leftDiceValue = 0;
-            _rightDiceValue = 0;
+            leftDiceValue = 0;
+            rightDiceValue = 0;
 
             ClearPawnChildren();
             SpawnPawns(skillIssueBroController.GetPawns());
@@ -87,9 +86,9 @@ namespace BoardGames.View.SkillIssueBro.Board
 
         private void SwitchToNextTurn()
         {
-            _leftDiceValue = 0;
-            _rightDiceValue = 0;
-            _currentPlayerTries = 2;
+            leftDiceValue = 0;
+            rightDiceValue = 0;
+            currentPlayerTries = 2;
 
             ClearPawnChildren();
             SpawnPawns(skillIssueBroController.GetPawns());
@@ -101,14 +100,13 @@ namespace BoardGames.View.SkillIssueBro.Board
 
         private void OnPawnClicked(object sender, PawnClickedEventArgs e)
         {
-            
             int column = e.Column;
             int row = e.Row;
 
             try
             {
-                skillIssueBroController.MovePawnBasedOnClick(column, row, _leftDiceValue, _rightDiceValue);
-                if(_leftDiceValue != _rightDiceValue)
+                skillIssueBroController.MovePawnBasedOnClick(column, row, leftDiceValue, rightDiceValue);
+                if (leftDiceValue != rightDiceValue)
                 {
                     SwitchToNextTurn();
                 }
@@ -120,14 +118,14 @@ namespace BoardGames.View.SkillIssueBro.Board
             }
             catch (Exception ex)
             {
-                if(ex.Message.Equals("Can't move pawn yet"))
+                if (ex.Message.Equals("Can't move pawn yet"))
                 {
                     MessageBox.Show(ex.Message);
                 }
                 else if (ex.Message.Equals("You have to roll two 6s!"))
                 {
                     MessageBox.Show(ex.Message);
-                    if (_leftDiceValue != _rightDiceValue)
+                    if (leftDiceValue != rightDiceValue)
                     {
                         SwitchToNextTurn();
                     }
@@ -139,8 +137,8 @@ namespace BoardGames.View.SkillIssueBro.Board
                 else
                 {
                     // penalize player to hurry game 
-                    _currentPlayerTries--;
-                    if(_currentPlayerTries == 0)
+                    currentPlayerTries--;
+                    if (currentPlayerTries == 0)
                     {
                         MessageBox.Show("Tries left 0\nSkipping turn");
                         SwitchToNextTurn();
@@ -150,53 +148,46 @@ namespace BoardGames.View.SkillIssueBro.Board
                         MessageBox.Show(ex.Message + "\nTries left 1");
                     }
                 }
-                
-                
             }
         }
 
-
         private void RollButton_Clicked(object sender, EventArgs e)
         {
-            _leftDiceValue = skillIssueBroController.RollDice();
-            _rightDiceValue = skillIssueBroController.RollDice();
-            
+            leftDiceValue = skillIssueBroController.RollDice();
+            rightDiceValue = skillIssueBroController.RollDice();
             // show the dice in the view
-            GenerateLeftDice(_leftDiceValue);
-            GenerateRightDice(_rightDiceValue);
-            
+            GenerateLeftDice(leftDiceValue);
+            GenerateRightDice(rightDiceValue);
         }
 
         private void GenerateLeftDice(int value)
         {
-            
-
             switch (value)
             {
                 case 1:
-                    _leftDice = new DiceWithNumber1();
+                    leftDice = new DiceWithNumber1();
                     break;
                 case 2:
-                    _leftDice = new DiceWithNumber2();
+                    leftDice = new DiceWithNumber2();
                     break;
                 case 3:
-                    _leftDice = new DiceWithNumber3();
+                    leftDice = new DiceWithNumber3();
                     break;
                 case 4:
-                    _leftDice = new DiceWithNumber4();
+                    leftDice = new DiceWithNumber4();
                     break;
                 case 5:
-                    _leftDice = new DiceWithNumber5();
+                    leftDice = new DiceWithNumber5();
                     break;
                 default:
-                    _leftDice = new DiceWithNumber6();
+                    leftDice = new DiceWithNumber6();
                     break;
             }
 
             // Add the leftDice to the grid and store the reference in the dictionary
-            Grid.SetColumn(_leftDice, 0);
-            Grid.SetRow(_leftDice, 1);
-            column1.column1Grid.Children.Add(_leftDice);
+            Grid.SetColumn(leftDice, 0);
+            Grid.SetRow(leftDice, 1);
+            column1.column1Grid.Children.Add(leftDice);
         }
 
         private void GenerateRightDice(int value)
@@ -204,35 +195,34 @@ namespace BoardGames.View.SkillIssueBro.Board
             switch (value)
             {
                 case 1:
-                    _rightDice = new DiceWithNumber1();
+                    rightDice = new DiceWithNumber1();
                     break;
                 case 2:
-                    _rightDice = new DiceWithNumber2();
+                    rightDice = new DiceWithNumber2();
                     break;
                 case 3:
-                    _rightDice = new DiceWithNumber3();
+                    rightDice = new DiceWithNumber3();
                     break;
                 case 4:
-                    _rightDice = new DiceWithNumber4();
+                    rightDice = new DiceWithNumber4();
                     break;
                 case 5:
-                    _rightDice = new DiceWithNumber5();
+                    rightDice = new DiceWithNumber5();
                     break;
                 default:
-                    _rightDice = new DiceWithNumber6();
+                    rightDice = new DiceWithNumber6();
                     break;
             }
 
-            Grid.SetColumn(_rightDice, 0);
-            Grid.SetRow(_rightDice, 1);
-            column2.column2Grid.Children.Add(_rightDice);
+            Grid.SetColumn(rightDice, 0);
+            Grid.SetRow(rightDice, 1);
+            column2.column2Grid.Children.Add(rightDice);
         }
-
 
         private void GameBoardWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // create the controller when the window is loaded
-            skillIssueBroController = new SkillIssueBroGameController(_players);
+            skillIssueBroController = new SkillIssueBroGameController(players);
             SpawnPawns(skillIssueBroController.GetPawns());
             ShowCurrentPlayerColorEllipse();
 
@@ -242,31 +232,31 @@ namespace BoardGames.View.SkillIssueBro.Board
         private void SpawnPawns(List<Pawn> pawnsToSpawn)
         {
             // blue and yellow spawned regardless
-            for(int i=0; i<4;i++)
+            for (int i = 0; i < 4; i++)
             {
                 Tile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
                 gameBoard.AddBluePawn((int)occupiedTile.GetCenterXPosition(), (int)occupiedTile.GetCenterYPosition());
             }
 
-            for(int i = 4; i < 8; i++)
+            for (int i = 4; i < 8; i++)
             {
                 Tile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
                 gameBoard.AddYellowPawn((int)occupiedTile.GetCenterXPosition(), (int)occupiedTile.GetCenterYPosition());
             }
 
             // green if player count > 2
-            if(_players.Count > 2)
+            if (players.Count > 2)
             {
-                for(int i=8; i<12; i++)
+                for (int i = 8; i < 12; i++)
                 {
                     Tile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
                     gameBoard.AddGreenPawn((int)occupiedTile.GetCenterXPosition(), (int)occupiedTile.GetCenterYPosition());
                 }
             }
-            // red if player count > 3 
-            if (_players.Count > 3)
+            // red if player count > 3
+            if (players.Count > 3)
             {
-                for(int i=12; i < 16; i++)
+                for (int i = 12; i < 16; i++)
                 {
                     Tile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
                     gameBoard.AddRedPawn((int)occupiedTile.GetCenterXPosition(), (int)occupiedTile.GetCenterYPosition());
@@ -274,20 +264,15 @@ namespace BoardGames.View.SkillIssueBro.Board
             }
         }
 
-
-      
         private void ClearPawnChildren()
         {
-            
             for (int i = gameBoard.MainGrid.Children.Count - 1; i >= 0; i--)
             {
-                
                 if (gameBoard.MainGrid.Children[i] is PawnBlue ||
                     gameBoard.MainGrid.Children[i] is PawnYellow ||
                     gameBoard.MainGrid.Children[i] is PawnGreen ||
                     gameBoard.MainGrid.Children[i] is PawnRed)
                 {
-                   
                     gameBoard.MainGrid.Children.RemoveAt(i);
                 }
             }

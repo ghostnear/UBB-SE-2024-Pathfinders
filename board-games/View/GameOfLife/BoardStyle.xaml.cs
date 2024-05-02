@@ -10,13 +10,13 @@ namespace BoardGames.View.GameOfLife
     public partial class BoardStyle : Page
     {
         private bool isPicture1Displayed = true;
-        private BitmapImage _boardLight;
-        private BitmapImage _boardDark;
+        private BitmapImage boardLight;
+        private BitmapImage boardDark;
         public BoardStyle()
         {
             InitializeComponent();
-            _boardLight = new BitmapImage(new Uri("../../Resources/board_style_light.png", UriKind.Relative));
-            _boardDark = new BitmapImage(new Uri("../../Resources/board_style_dark.png", UriKind.Relative));
+            boardLight = new BitmapImage(new Uri("../../Resources/board_style_light.png", UriKind.Relative));
+            boardDark = new BitmapImage(new Uri("../../Resources/board_style_dark.png", UriKind.Relative));
 
             DisplayCurrentPicture();
         }
@@ -25,11 +25,11 @@ namespace BoardGames.View.GameOfLife
         {
             if (isPicture1Displayed)
             {
-                ImageControl.Source = _boardLight;
+                ImageControl.Source = boardLight;
             }
             else
             {
-                ImageControl.Source = _boardDark;
+                ImageControl.Source = boardDark;
             }
         }
 

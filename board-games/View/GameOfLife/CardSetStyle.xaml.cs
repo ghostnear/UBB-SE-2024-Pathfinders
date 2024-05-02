@@ -10,13 +10,13 @@ namespace BoardGames.View.GameOfLife
     public partial class CardSetStyle : Page
     {
         private bool isPicture1Displayed = true;
-        private BitmapImage _cardSetLight;
-        private BitmapImage _cardSetDark;
+        private BitmapImage cardSetLight;
+        private BitmapImage cardSetDark;
         public CardSetStyle()
         {
             InitializeComponent();
-            _cardSetLight = new BitmapImage(new Uri("../../Resources/cardset_light.png", UriKind.Relative));
-            _cardSetDark = new BitmapImage(new Uri("../../Resources/cardset_dark.png", UriKind.Relative));
+            cardSetLight = new BitmapImage(new Uri("../../Resources/cardset_light.png", UriKind.Relative));
+            cardSetDark = new BitmapImage(new Uri("../../Resources/cardset_dark.png", UriKind.Relative));
 
             DisplayCurrentPicture();
         }
@@ -25,11 +25,11 @@ namespace BoardGames.View.GameOfLife
         {
             if (isPicture1Displayed)
             {
-                ImageControl.Source = _cardSetLight;
+                ImageControl.Source = cardSetLight;
             }
             else
             {
-                ImageControl.Source = _cardSetDark;
+                ImageControl.Source = cardSetDark;
             }
         }
 

@@ -9,7 +9,7 @@ namespace BoardGames.View
     public partial class ChoosePlayerNumberView : Page
     {
         // !!!! TODO: add a CONTINUE or START button here as well!!!!
-        private int _playerNumber = 0;
+        private int playerNumber = 0;
         public ChoosePlayerNumberView()
         {
             InitializeComponent();
@@ -22,25 +22,25 @@ namespace BoardGames.View
 
         private void UpArrowButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_playerNumber + 1 <= 6)
+            if (playerNumber + 1 <= 6)
             {
-                _playerNumber++;
-                PlayerNumberTextBlock.Text = _playerNumber.ToString();
+                playerNumber++;
+                PlayerNumberTextBlock.Text = playerNumber.ToString();
             }
         }
 
         private void DownArrowButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_playerNumber - 1 >= 0)
+            if (playerNumber - 1 >= 0)
             {
-                _playerNumber--;
-                PlayerNumberTextBlock.Text = _playerNumber.ToString();
+                playerNumber--;
+                PlayerNumberTextBlock.Text = playerNumber.ToString();
             }
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Host_WaitingForPlayersView(_playerNumber));
+            this.NavigationService.Navigate(new Host_WaitingForPlayersView(playerNumber));
         }
     }
 }

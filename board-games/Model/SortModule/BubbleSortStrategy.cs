@@ -1,15 +1,16 @@
 ﻿namespace BoardGames.src.Sort
 {
-    public class BubbleSortStrategy<T> : SortStrategy<T> where T : IComparable<T>
+    public class BubbleSortStrategy<T> : ISortStrategy<T>
+        where T : IComparable<T>
     {
-        private int _sortingMultiplier = 1;
+        private int sortingMultiplier = 1;
 
         public BubbleSortStrategy() { }
         public BubbleSortStrategy(bool isAscending)
         {
             if (!isAscending)
             {
-                _sortingMultiplier = -1;
+                sortingMultiplier = -1;
             }
         }
         public void Sort(List<T> data)
@@ -22,7 +23,7 @@
                 sorted = true;
                 for (int index = 0; index < length - 1; index++)
                 {
-                    if (data[index].CompareTo(data[index + 1]) * _sortingMultiplier > 0)
+                    if (data[index].CompareTo(data[index + 1]) * sortingMultiplier > 0)
                     {
                         sorted = false;
                         T temporary = data[index];
