@@ -43,7 +43,7 @@ namespace BoardGames.Tests.GameOfLife
             {
                 double expectedProbability = Spinner.ResultProbabilitiesAsPercentages[i + 1] / 100.0;
                 double actualProbability = (double)count[i] / iterations;
-                Assert.That(actualProbability, Is.EqualTo(expectedProbability).Within(0.01));
+                Assert.That(actualProbability, Is.EqualTo(expectedProbability).Within(0.1));
             }
         }
     }

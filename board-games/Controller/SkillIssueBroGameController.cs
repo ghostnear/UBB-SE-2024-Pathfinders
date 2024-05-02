@@ -252,8 +252,11 @@ namespace BoardGames.Controller
              */
             return gamePawns;
         }
-
-        public int RollDice()
+        public void SetPawns(List<Pawn> newPawns)
+        {
+            this.gamePawns = newPawns;
+        }
+            public int RollDice()
         {
             return gameBoard.GetDice().RollDice();
         }
@@ -487,7 +490,7 @@ namespace BoardGames.Controller
             OnPawnKilled();
         }
 
-        private void MovePawn(int pawnId, int leftDiceValue, int rightDiceValue, int playerId)
+        public void MovePawn(int pawnId, int leftDiceValue, int rightDiceValue, int playerId)
         {
             int diceValue = leftDiceValue + rightDiceValue;
             if (diceValue == 0)

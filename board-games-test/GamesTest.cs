@@ -9,7 +9,7 @@ internal class GamesTests
     public void GetPlayers_ReturnsPlayers()
     {
         // Arrange
-        var mockGame = new Mock<Games>(1) { CallBase = true };
+        var mockGame = new Mock<Games>() { CallBase = true };
         var mockPlayers = new List<Player>
         {
             new Player(1, "Player1"),

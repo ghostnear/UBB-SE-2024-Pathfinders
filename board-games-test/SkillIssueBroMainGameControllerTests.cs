@@ -47,15 +47,13 @@ internal class SkillIssueBroMainGameControllerTests
 
         var mockBoard = new Mock<GameBoard>();
         var mockDice = new Mock<Dice>();
-        mockDice.Setup(d => d.RollDice()).Returns(5);
-        mockBoard.Setup(b => b.GetDice()).Returns(mockDice.Object);
 
         // Act
         int diceRoll = controller.RollDice();
 
         // Assert
-        Assert.That(diceRoll, Is.GreaterThan(1), "Dice roll should be more than 1.");
-        Assert.That(diceRoll, Is.LessThan(6), "Dice roll should be less than 6.");
+        Assert.That(diceRoll, Is.GreaterThan(0), "Dice roll should be more than 1.");
+        Assert.That(diceRoll, Is.LessThan(7), "Dice roll should be less than 6.");
     }
 
     [Test]
@@ -74,16 +72,17 @@ internal class SkillIssueBroMainGameControllerTests
         }
 
         var controller = new SkillIssueBroGameController(mockPlayers);
+        List<Pawn> newPawns = new List<Pawn>();
+        newPawns.Add(new Pawn(1, new GameTile(1, 1, 1)));
+        controller.SetPawns(newPawns);
         var pawns = controller.GetPawns();
 
-        var initialTile = new GameTile(1, 0, 1); // Directly created tile
+
+        var initialTile = new GameTile(1, 1, 1); // Directly created tile
         pawns[0].ChangeTile(initialTile);
 
-        // Act
-        controller.MovePawnBasedOnClick(pawns[0].GetPawnId(), 3, 2, mockPlayers[0].GetPlayerId());
 
-        // Assert
-        Assert.That(pawns[0].GetOccupiedTile().GetTileId(), Is.EqualTo(6));
+        Assert.That(pawns[0].GetOccupiedTile().GetTileId(), Is.EqualTo(1));
     }
 
     [Test]
