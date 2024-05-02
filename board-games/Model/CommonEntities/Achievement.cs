@@ -2,36 +2,36 @@
 {
     internal enum GameCategory
     {
-        SkillIssueBro = 0, 
+        SkillIssueBro = 0,
         GameOfLife = 1,
     }
 
     internal class Achievement
     {
-        private string _name;
-        private string _description;
-        private GameCategory _gameCategory;
+        private string name;
+        private string description;
+        private GameCategory gameCategory;
 
         public Achievement(string name, string description, GameCategory gameCategory)
         {
-            _name = name;
-            _description = description;
-            _gameCategory = gameCategory;
+            this.name = name;
+            this.description = description;
+            this.gameCategory = gameCategory;
         }
 
         public string GetNameOfAchievement()
         {
-            return _name;
+            return name;
         }
 
         public string GetDescriptionOfAchievement()
         {
-            return _description;
+            return description;
         }
 
         public GameCategory GetAchievementGameCategory()
         {
-            return _gameCategory;
+            return gameCategory;
         }
     }
 }

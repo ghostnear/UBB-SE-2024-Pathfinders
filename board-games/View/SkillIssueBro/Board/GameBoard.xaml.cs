@@ -18,7 +18,6 @@ namespace board_games.View.SkillIssueBro.Board
         public void AddBluePawn(int column, int row)
         {
             var bluePawn = new PawnBlue();
-            
             Grid.SetColumn(bluePawn, column);
             Grid.SetRow(bluePawn, row);
             MainGrid.Children.Add(bluePawn);
@@ -68,7 +67,6 @@ namespace board_games.View.SkillIssueBro.Board
             MainGrid.Children.Add(redPawn);
             redPawn.button.Click += OnPawnClicked;
         }
-
     }
 
     public class PawnClickedEventArgs : EventArgs

@@ -2,38 +2,38 @@
 {
     internal class Pawn
     {
-        private int _pawnId;
-        private Tile _occupiedTile;
-        private Player _associatedPlayer;
+        private int pawnId;
+        private Tile occupiedTile;
+        private Player associatedPlayer;
 
         public Pawn(int pawnId, Tile occupiedTile)
         {
-            _pawnId = pawnId;
-            _occupiedTile = occupiedTile;
+            this.pawnId = pawnId;
+            this.occupiedTile = occupiedTile;
         }
 
         public Pawn(int pawnId, Tile occupiedTile, Player associatedPlayer)
         {
-            _pawnId = pawnId;
-            _occupiedTile = occupiedTile;
-            _associatedPlayer = associatedPlayer;
+            this.pawnId = pawnId;
+            this.occupiedTile = occupiedTile;
+            this.associatedPlayer = associatedPlayer;
         }
 
         public void ChangeTile(Tile tileToChangeTo)
         {
-            _occupiedTile = tileToChangeTo;
+            occupiedTile = tileToChangeTo;
         }
         public Tile GetOccupiedTile() {
-            return _occupiedTile;
+            return occupiedTile;
         }
-        public int GetPawnId() { return _pawnId; }
+        public int GetPawnId() { return pawnId; }
         public Player GetPlayer() {
-            return _associatedPlayer;
+            return associatedPlayer;
         }
 
         public void SetAssociatedPlayer(Player associatedPlayer)
         {
-            _associatedPlayer = associatedPlayer;
+            this.associatedPlayer = associatedPlayer;
         }
 
     }

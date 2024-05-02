@@ -10,12 +10,12 @@ namespace board_games.Model.GameOfLife.Cards.Effect
     {
         public DeathEffect()
         {
-            this._additionalEffect = null;
+            this.additionalEffect = null;
         }
 
         public DeathEffect(IEffect additionalEffect)
         {
-            this._additionalEffect = additionalEffect;
+            this.additionalEffect = additionalEffect;
         }
 
         public override void DoEffect()

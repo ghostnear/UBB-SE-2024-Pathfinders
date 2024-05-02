@@ -4,45 +4,43 @@ namespace board_games.Model.SkillIssueBroEntities
 {
     internal class SkillIssueBoard : Games
     {
-        private int _currentPlayerId;
-        private List<Player> _players;
-        private List<Pawn> _pawns;
-        private List<SiBTile> _sibTiles;
-        private Dice _sixSidedDice;
+        private List<Player> players;
+        private List<Pawn> pawns;
+        private List<SiBTile> sibTiles;
+        private Dice sixSidedDice;
 
         public SkillIssueBoard(List<SiBTile> tiles,List<Pawn> pawns, List<Player> players, int idOfFirstPlayerToRoll)
         {
-            _sibTiles = tiles;
-            _players = players;
-            _currentPlayerId = idOfFirstPlayerToRoll;
-            _sixSidedDice = new Dice();
-            _pawns = pawns;
+            sibTiles = tiles;
+            this.players = players;
+            sixSidedDice = new Dice();
+            this.pawns = pawns;
         }
 
         public override List<Player> GetPlayers()
         {
-            return _players;
+            return players;
         }
 
         public List<SiBTile> GetTiles()
         {
-            return _sibTiles;
+            return sibTiles;
         }
 
         public List<Pawn> GetPawns()
         {
-            return _pawns;
+            return pawns;
         }
 
         public Dice GetDice()
         {
-            return _sixSidedDice;
+            return sixSidedDice;
         }
 
         public void UpdatePawns(List<Pawn> newPawns)
         {
-            _pawns = newPawns;
-            //SaveGameState();
+            pawns = newPawns;
+            // SaveGameState();
         }
     }
 }

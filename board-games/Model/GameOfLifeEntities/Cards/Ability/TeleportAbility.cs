@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace board_games.Model.GameOfLife.Cards.Ability
 {
-    class TeleportAbility : IAbility
+    internal class TeleportAbility
     {
         public static readonly int Cooldown = 1;
 
-        public TeleportAbility() { }
+        public TeleportAbility()
+        {
+        }
     }
 }

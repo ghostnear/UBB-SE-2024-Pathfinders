@@ -7,22 +7,22 @@ using board_games.Model.GameOfLife.Cards.Ability;
 
 namespace board_games.Model.GameOfLife.Cards
 {
-    public class BadCardNegationAbility : IAbility
+    public class BadCardNegationAbility
     {
-        private CardType _typeToNegate;
+        private CardType typeToNegate;
         public int TurnsLeft { get; set; }
-        public readonly int cooldown;
-        
+        public readonly int Cooldown;
+
         public BadCardNegationAbility(CardType typeToNegate, int numberOfTurns, int cooldown)
         {
-            this._typeToNegate = typeToNegate;
+            this.typeToNegate = typeToNegate;
             this.TurnsLeft = numberOfTurns;
-            this.cooldown = cooldown;
+            this.Cooldown = cooldown;
         }
 
         public CardType GetTypeToNegate()
         {
-            return _typeToNegate;
+            return typeToNegate;
         }
 
     }

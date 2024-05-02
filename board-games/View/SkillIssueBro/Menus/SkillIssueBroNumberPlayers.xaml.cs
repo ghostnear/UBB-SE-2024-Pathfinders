@@ -24,12 +24,12 @@ namespace board_games.View.SkillIssueBro.Menus
         {
             NavigationService.Navigate(new GameBoardWindow());
         }
-        
+
         private void OnChooseThreePlayers(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new GameBoardWindow());
         }
-        
+
         private void OnChooseFourPlayers(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new GameBoardWindow());

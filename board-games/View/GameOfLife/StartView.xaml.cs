@@ -1,7 +1,7 @@
-﻿using board_games.View.GameOfLife;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using board_games.View.GameOfLife;
 
 namespace board_games.View
 {

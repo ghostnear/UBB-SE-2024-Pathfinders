@@ -2,11 +2,11 @@
 {
     internal class Dice
     {
-        private Random _randomizer = new Random();
-        
+        private Random randomizer = new Random();
+
         public int RollDice()
         {
-            return _randomizer.Next(1, 7);
+            return randomizer.Next(1, 7);
         }
     }
 }

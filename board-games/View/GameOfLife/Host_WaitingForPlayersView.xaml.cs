@@ -8,22 +8,22 @@ namespace board_games.View
     /// </summary>
     public partial class Host_WaitingForPlayersView : Page
     {
-        private int _connectedPlayers = 0;
-        private int _playerNumber;
-        private string _gameID = string.Empty;
-        public Host_WaitingForPlayersView(int _playerNumber)
+        private int connectedPlayers = 0;
+        private int playerNumber;
+        private string gameID = string.Empty;
+        public Host_WaitingForPlayersView(int playerNumber)
         {
             InitializeComponent();
-            this._playerNumber = _playerNumber;
+            this.playerNumber = playerNumber;
             Loaded += Host_WaitingForPlayersView_Loaded;
         }
 
         private void Host_WaitingForPlayersView_Loaded(object sender, RoutedEventArgs e)
         {
             // _connectedPlayers = GetConnectedPlayers();
-            ConnectedPlayersTextBlock.Text = _connectedPlayers.ToString() + "/" + _playerNumber.ToString();
+            ConnectedPlayersTextBlock.Text = connectedPlayers.ToString() + "/" + playerNumber.ToString();
             // _gameID = GetGameID();
-            CodeTextBlock.Text = "#" + _gameID.ToString();
+            CodeTextBlock.Text = "#" + gameID.ToString();
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)

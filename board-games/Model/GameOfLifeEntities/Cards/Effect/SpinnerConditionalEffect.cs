@@ -10,12 +10,12 @@ namespace board_games.Model.GameOfLife.Cards.Effect
     {
         public SpinnerConditionalEffect()
         {
-            this._additionalEffect = null;
+            this.additionalEffect = null;
         }
 
         public SpinnerConditionalEffect(IEffect additionalEffect)
         {
-            this._additionalEffect = additionalEffect;
+            this.additionalEffect = additionalEffect;
         }
 
         public override void DoEffect()

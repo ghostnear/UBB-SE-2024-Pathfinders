@@ -8,18 +8,18 @@ namespace board_games.Model.GameOfLife.Cards.Effect
 {
     public class SalaryModifyEffect : IEffect
     {
-        private readonly int _salaryModifyAmount;
+        private readonly int salaryModifyAmount;
 
         public SalaryModifyEffect(int salaryModifyAmount)
         {
-            this._salaryModifyAmount = salaryModifyAmount;
-            this._additionalEffect = null;
+            this.salaryModifyAmount = salaryModifyAmount;
+            this.additionalEffect = null;
         }
 
         public SalaryModifyEffect(int salaryModifyAmount, IEffect additionalEffect)
         {
-            this._salaryModifyAmount = salaryModifyAmount;
-            this._additionalEffect = additionalEffect;
+            this.salaryModifyAmount = salaryModifyAmount;
+            this.additionalEffect = additionalEffect;
         }
 
         public override void DoEffect()

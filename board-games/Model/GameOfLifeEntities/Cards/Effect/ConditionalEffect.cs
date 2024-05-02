@@ -8,21 +8,21 @@ namespace board_games.Model.GameOfLife.Cards.Effect
 {
     public class ConditionalEffect : IEffect
     {
-        private readonly IEffect _effectIfFirstPathChosen;
-        private readonly IEffect _effectIfSecondPathChosen;
+        private readonly IEffect effectIfFirstPathChosen;
+        private readonly IEffect effectIfSecondPathChosen;
 
         public ConditionalEffect(IEffect effectIfFirstPathChosen, IEffect effectIfSecondPathChosen)
         {
-            this._effectIfFirstPathChosen = effectIfFirstPathChosen;
-            this._effectIfSecondPathChosen = effectIfSecondPathChosen;
-            this._additionalEffect = null;
+            this.effectIfFirstPathChosen = effectIfFirstPathChosen;
+            this.effectIfSecondPathChosen = effectIfSecondPathChosen;
+            this.additionalEffect = null;
         }
 
         public ConditionalEffect(IEffect effectIfFirstPathChosen, IEffect effectIfSecondPathChosen, IEffect additionalEffect)
         {
-            this._effectIfFirstPathChosen = effectIfFirstPathChosen;
-            this._effectIfSecondPathChosen = effectIfSecondPathChosen;
-            this._additionalEffect = additionalEffect;
+            this.effectIfFirstPathChosen = effectIfFirstPathChosen;
+            this.effectIfSecondPathChosen = effectIfSecondPathChosen;
+            this.additionalEffect = additionalEffect;
         }
 
         public override void DoEffect()

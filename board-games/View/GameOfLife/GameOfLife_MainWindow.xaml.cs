@@ -17,17 +17,18 @@ namespace board_games
         private const int NumberOfEventTilesByCategory = 10;
         private const int TotalNumberOfEventTiles = 3 * NumberOfEventTilesByCategory;
         private const int NumberOfGreenTiles = 8;
-        private const string tileNameCommonRoot = "Tile";
-        private int _spinnerValue;
-        private GameOfLifeBoard _gameOfLifeBoard = new GameOfLifeBoard();
-        private BitmapImage _spinnerDisplay;
-        //new BitmapImage(new Uri("../../Resources/SpinnerValues/Spinner1.png", UriKind.Relative));
-        private const string commonFileRoot = "../../Resources/SpinnerValues/Spinner";
+        private const string TileNameCommonRoot = "Tile";
+        private int spinnerValue;
+        private GameOfLifeBoard gameOfLifeBoard = new GameOfLifeBoard();
+        private BitmapImage spinnerDisplay;
+        // new BitmapImage(new Uri("../../Resources/SpinnerValues/Spinner1.png", UriKind.Relative));
+        private const string CommonFileRoot = "../../Resources/SpinnerValues/Spinner";
         public GameOfLife_MainWindow()
         {
             InitializeComponent();
             Loaded += GameOfLife_MainWindow_Loaded;
         }
+
         /// <summary>
         /// Generates a list of unique random integers from 1 to 80 (inclusive)
         /// </summary>
@@ -79,6 +80,7 @@ namespace board_games
             List<int> indicesOfOrangeTiles = indicesToColor.GetRange(nextIndex, NumberOfEventTilesByCategory);
             ColorTiles(indicesOfOrangeTiles, Color.FromRgb(241, 151, 54));
         }
+
         /// <summary>
         /// Colors the tiles with specified indices using the given brush color.
         /// </summary>
@@ -88,10 +90,9 @@ namespace board_games
         {
             SolidColorBrush currentBrush = new SolidColorBrush(givenBrushColor);
             string currentTileName;
-            
-            foreach(int tileIndex in tileIndexesToColor)
+            foreach (int tileIndex in tileIndexesToColor)
             {
-                currentTileName = tileNameCommonRoot + tileIndex.ToString();
+                currentTileName = TileNameCommonRoot + tileIndex.ToString();
                 Path currentTile = (Path)FindName(currentTileName);
                 currentTile.Fill = currentBrush;
             }
@@ -102,33 +103,22 @@ namespace board_games
             this.NavigationService.Navigate(new HostJoinView());
         }
 
-
-        private void DisplayCard(string Category)
-        {
-            // if player is on a special tile
-            // from Category, generate a random number (associated to a card file name)
-            // display the card
-            // tap somewhere (x? outside card?) to resume game
-        }
-
-
-
         private void SpinnerActionArea_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            _spinnerValue = _gameOfLifeBoard.SpinSpinner();
-            string currentSpinnerDisplay = commonFileRoot + _spinnerValue.ToString();
-            _spinnerDisplay = new BitmapImage(new Uri(currentSpinnerDisplay, UriKind.Relative));
-            ImageControl.Source = _spinnerDisplay;
+            spinnerValue = gameOfLifeBoard.SpinSpinner();
+            string currentSpinnerDisplay = CommonFileRoot + spinnerValue.ToString();
+            spinnerDisplay = new BitmapImage(new Uri(currentSpinnerDisplay, UriKind.Relative));
+            ImageControl.Source = spinnerDisplay;
         }
 
         private void ActionArea_Click(object sender, RoutedEventArgs e)
         {
-            _spinnerValue = _gameOfLifeBoard.SpinSpinner();
-            string currentSpinnerDisplay = commonFileRoot + _spinnerValue.ToString();
+            spinnerValue = gameOfLifeBoard.SpinSpinner();
+            string currentSpinnerDisplay = CommonFileRoot + spinnerValue.ToString();
             currentSpinnerDisplay += ".png";
-            _spinnerDisplay = new BitmapImage(new Uri(currentSpinnerDisplay, UriKind.Relative));
-            //_spinnerDisplay = new BitmapImage(new Uri("D:/board-games/board-games/board-games/Resources/SpinnerValues/Spinner10.png", UriKind.Absolute));
-            ImageControl.Source = _spinnerDisplay;
+            spinnerDisplay = new BitmapImage(new Uri(currentSpinnerDisplay, UriKind.Relative));
+            // spinnerDisplay = new BitmapImage(new Uri("D:/board-games/board-games/board-games/Resources/SpinnerValues/Spinner10.png", UriKind.Absolute));
+            ImageControl.Source = spinnerDisplay;
         }
     }
 

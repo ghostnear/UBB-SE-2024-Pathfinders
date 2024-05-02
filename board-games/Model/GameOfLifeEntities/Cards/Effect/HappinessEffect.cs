@@ -8,18 +8,18 @@ namespace board_games.Model.GameOfLife.Cards.Effect
 {
     public class HappinessEffect : IEffect
     {
-        private readonly int _happinessAmount;
+        private readonly int happinessAmount;
 
         public HappinessEffect(int happinessAmount)
         {
-            this._happinessAmount = happinessAmount;
-            this._additionalEffect = null;
+            this.happinessAmount = happinessAmount;
+            this.additionalEffect = null;
         }
 
         public HappinessEffect(int happinessAmount, IEffect additionalEffect)
         {
-            this._happinessAmount = happinessAmount;
-            this._additionalEffect = additionalEffect;
+            this.happinessAmount = happinessAmount;
+            this.additionalEffect = additionalEffect;
         }
 
         public override void DoEffect()

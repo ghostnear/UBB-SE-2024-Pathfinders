@@ -9,37 +9,37 @@ namespace board_games.Model.GameOfLife.Cards
 {
     public class Card
     {
-        private CardType _type;
-        private Texture _texture;
-        private IEffect _effect;
-        private Boolean _isConsideredBad;
+        private CardType type;
+        private Texture texture;
+        private IEffect effect;
+        private bool isConsideredBad;
 
         public Card(CardType type, Texture texture, IEffect effect, Boolean isConsideredBad)
         {
-            this._type = type;
-            this._texture = texture;
-            this._effect = effect;
-            this._isConsideredBad = isConsideredBad;
+            this.type = type;
+            this.texture = texture;
+            this.effect = effect;
+            this.isConsideredBad = isConsideredBad;
         }
 
         public CardType GetType()
         {
-            return _type;
+            return type;
         }
 
         public Texture GetTexture()
         {
-            return _texture;
-        }
-        
-        public IEffect GetEffect()
-        {
-            return _effect;
+            return texture;
         }
 
-        public Boolean IsConsideredBad()
+        public IEffect GetEffect()
         {
-            return _isConsideredBad;
+            return effect;
+        }
+
+        public bool IsConsideredBad()
+        {
+            return isConsideredBad;
         }
 
     }

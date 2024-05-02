@@ -2,20 +2,20 @@
 {
     internal class Player
     {
-        private int _playerId;
-        private string _playerName;
+        private int playerId;
+        private string playerName;
 
         public Player(int playerId, string playerName)
         {
-            _playerId = playerId;
-            _playerName = playerName;
+            this.playerId = playerId;
+            this.playerName = playerName;
         }
 
         public string GetPlayerName()
         {
-            return _playerName;
+            return playerName;
         }
-        public int GetPlayerId() {  return _playerId; }
+        public int GetPlayerId() { return playerId; }
 
         /* todo: add completed achievements */
 

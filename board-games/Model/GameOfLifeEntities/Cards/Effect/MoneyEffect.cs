@@ -8,18 +8,18 @@ namespace board_games.Model.GameOfLife.Cards.Effect
 {
     public class MoneyEffect : IEffect
     {
-        private readonly int _moneyAmount;
+        private readonly int moneyAmount;
 
         public MoneyEffect(int moneyAmount)
         {
-            this._moneyAmount = moneyAmount;
-            this._additionalEffect = null;
+            this.moneyAmount = moneyAmount;
+            this.additionalEffect = null;
         }
 
         public MoneyEffect(int moneyAmount, IEffect additionalEffect)
         {
-            this._moneyAmount = moneyAmount;
-            this._additionalEffect = additionalEffect;
+            this.moneyAmount = moneyAmount;
+            this.additionalEffect = additionalEffect;
         }
 
         public override void DoEffect()

@@ -4,20 +4,29 @@ namespace board_games.Model.SkillIssueBroEntities
 {
     internal class SiBTile :Tile
     {
-        private int _tileId;
-        private int _gridRowIndex;
-        private int _gridColumnIndex;
+        private int tileId;
+        private int gridRowIndex;
+        private int gridColumnIndex;
 
-        //someone find a solution
+        // someone find a solution
         public SiBTile(int tileId, int gridRowIndex, int gridColumnIndex) : base(tileId, gridColumnIndex, gridRowIndex)
         {
-            _tileId = tileId;
-            _gridRowIndex = gridRowIndex;
-            _gridColumnIndex = gridColumnIndex;
-        }   
+            this.tileId = tileId;
+            this.gridRowIndex = gridRowIndex;
+            this.gridColumnIndex = gridColumnIndex;
+        }
 
-        public int GetTileId() { return _tileId; }
-        public int GetGridRowIndex() { return _gridRowIndex; }  
-        public int GetGridColumnInded() {  return _gridColumnIndex; }
+        public int GetTileId()
+        {
+            return tileId;
+        }
+        public int GetGridRowIndex()
+        {
+            return gridRowIndex;
+        }
+        public int GetGridColumnInded()
+        {
+            return gridColumnIndex;
+        }
     }
 }

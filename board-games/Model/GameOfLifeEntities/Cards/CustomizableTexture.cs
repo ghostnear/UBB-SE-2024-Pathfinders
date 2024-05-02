@@ -8,23 +8,23 @@ namespace board_games.Model.GameOfLife.Cards
 {
     public class CustomizableTexture
     {
-        private readonly CustomizableType _type;
-        private readonly Texture _texture;
+        private readonly CustomizableType type;
+        private readonly Texture texture;
 
         public CustomizableTexture(CustomizableType type, Texture texture)
         {
-            this._type = type;
-            this._texture = texture;
+            this.type = type;
+            this.texture = texture;
         }
 
         public CustomizableType GetCustomizableType()
         {
-            return _type;
+            return type;
         }
 
         public Texture GetTexture()
         {
-            return _texture;
+            return texture;
         }
     }
 }
