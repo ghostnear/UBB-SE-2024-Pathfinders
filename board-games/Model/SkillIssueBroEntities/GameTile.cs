@@ -2,22 +2,33 @@
 
 namespace BoardGames.Model.SkillIssueBroEntities
 {
-    internal class GameTile :Tile
+    internal class GameTile : Tile
     {
-        private int _tileId;
-        private int _gridRowIndex;
-        private int _gridColumnIndex;
+        private int id;
+        private int gridRowIndex;
+        private int gridColumnIndex;
 
-        //someone find a solution
+        // someone find a solution
         public GameTile(int tileId, int gridRowIndex, int gridColumnIndex) : base(tileId, gridColumnIndex, gridRowIndex)
         {
-            _tileId = tileId;
-            _gridRowIndex = gridRowIndex;
-            _gridColumnIndex = gridColumnIndex;
-        }   
+            id = tileId;
+            this.gridRowIndex = gridRowIndex;
+            this.gridColumnIndex = gridColumnIndex;
+        }
 
-        public int GetTileId() { return _tileId; }
-        public int GetGridRowIndex() { return _gridRowIndex; }  
-        public int GetGridColumnInded() {  return _gridColumnIndex; }
+        public int GetTileId()
+        {
+            return id;
+        }
+
+        public int GetGridRowIndex()
+        {
+            return gridRowIndex;
+        }
+
+        public int GetGridColumnInded()
+        {
+            return gridColumnIndex;
+        }
     }
 }

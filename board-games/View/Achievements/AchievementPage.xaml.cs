@@ -1,5 +1,5 @@
-﻿using BoardGames.Model.CommonEntities;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
+using BoardGames.Model.CommonEntities;
 
 namespace BoardGames.View.Achievements
 {
