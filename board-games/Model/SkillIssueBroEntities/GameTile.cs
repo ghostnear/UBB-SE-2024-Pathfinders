@@ -2,14 +2,14 @@
 
 namespace BoardGames.Model.SkillIssueBroEntities
 {
-    internal class SiBTile :Tile
+    internal class GameTile :Tile
     {
         private int _tileId;
         private int _gridRowIndex;
         private int _gridColumnIndex;
 
         //someone find a solution
-        public SiBTile(int tileId, int gridRowIndex, int gridColumnIndex) : base(tileId, gridColumnIndex, gridRowIndex)
+        public GameTile(int tileId, int gridRowIndex, int gridColumnIndex) : base(tileId, gridColumnIndex, gridRowIndex)
         {
             _tileId = tileId;
             _gridRowIndex = gridRowIndex;

@@ -12,7 +12,6 @@
             centerPositionX = centerXPosition;
             centerPositionY = centerYPosition;
         }
-
         public float GetCenterXPosition()
         {
             return centerPositionX;

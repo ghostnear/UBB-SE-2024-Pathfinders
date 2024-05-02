@@ -5,9 +5,9 @@ namespace BoardGames.Controller
 {
     internal class SkillIssueBroGameController
     {
-        private SkillIssueBoard gameBoard;
+        private GameBoard gameBoard;
         private List<Player> players;
-        private List<SiBTile> gameTiles;
+        private List<GameTile> gameTiles;
         private List<Pawn> gamePawns;
 
         private static int generatedPawnIds = 0;
@@ -25,8 +25,8 @@ namespace BoardGames.Controller
 
             // id is subject to change; can do an insert first and then retrieve the id (bcuz identity)
             // and create the object
-            currentPlayerIndex = DetermineStartingPlayerIndex();
-            gameBoard = new SkillIssueBoard(gameTiles, gamePawns, this.players, currentPlayerIndex);
+            currentPlayerIndex = DetermineStartingPlayerIndex();    // This is unused later in the code.
+            gameBoard = new GameBoard(gameTiles, gamePawns, this.players);
         }
 
         protected virtual void OnPawnKilled()
@@ -145,102 +145,102 @@ namespace BoardGames.Controller
             }
         }
 
-        private List<SiBTile> GenerateTiles()
+        private List<GameTile> GenerateTiles()
         {
-            List<SiBTile> gameTiles =
+            List<GameTile> gameTiles =
             [
                 // the blue corner
-                new SiBTile(0, 9, 0), // id, row, column
-                new SiBTile(1, 9, 1),
-                new SiBTile(2, 10, 0),
-                new SiBTile(3, 10, 1),
+                new GameTile(0, 9, 0), // id, row, column
+                new GameTile(1, 9, 1),
+                new GameTile(2, 10, 0),
+                new GameTile(3, 10, 1),
 
                 // the yellow corner
-                new SiBTile(4, 0, 0),
-                new SiBTile(5, 0, 1),
-                new SiBTile(6, 1, 0),
-                new SiBTile(7, 1, 1),
+                new GameTile(4, 0, 0),
+                new GameTile(5, 0, 1),
+                new GameTile(6, 1, 0),
+                new GameTile(7, 1, 1),
 
                 // the green corner
-                new SiBTile(8, 0, 9),
-                new SiBTile(9, 0, 10),
-                new SiBTile(10, 1, 9),
-                new SiBTile(11, 1, 10),
+                new GameTile(8, 0, 9),
+                new GameTile(9, 0, 10),
+                new GameTile(10, 1, 9),
+                new GameTile(11, 1, 10),
 
                 // the red corner
-                new SiBTile(12, 9, 9),
-                new SiBTile(13, 9, 10),
-                new SiBTile(14, 10, 9),
-                new SiBTile(15, 10, 10),
+                new GameTile(12, 9, 9),
+                new GameTile(13, 9, 10),
+                new GameTile(14, 10, 9),
+                new GameTile(15, 10, 10),
             ];
 
             int index;
             int count = 16;
             for (index = 10; index >= 6; index--)
             {
-                gameTiles.Add(new SiBTile(count++, index, 4));
+                gameTiles.Add(new GameTile(count++, index, 4));
             }
             for (index = 3; index >= 0; index--)
             {
-                gameTiles.Add(new SiBTile(count++, 6, index));
+                gameTiles.Add(new GameTile(count++, 6, index));
             }
             for (index = 5; index >= 4; index--)
             {
-                gameTiles.Add(new SiBTile(count++, index, 0));
+                gameTiles.Add(new GameTile(count++, index, 0));
             }
             for (index = 1; index <= 4; index++)
             {
-                gameTiles.Add(new SiBTile(count++, 4, index));
+                gameTiles.Add(new GameTile(count++, 4, index));
             }
             for (index = 3; index >= 0; index--)
             {
-                gameTiles.Add(new SiBTile(count++, index, 4));
+                gameTiles.Add(new GameTile(count++, index, 4));
             }
             for (index = 5; index <= 6; index++)
             {
-                gameTiles.Add(new SiBTile(count++, 0, index));
+                gameTiles.Add(new GameTile(count++, 0, index));
             }
             for (index = 1; index <= 4; index++)
             {
-                gameTiles.Add(new SiBTile(count++, index, 6));
+                gameTiles.Add(new GameTile(count++, index, 6));
             }
             for (index = 7; index <= 10; index++)
             {
-                gameTiles.Add(new SiBTile(count++, 4, index));
+                gameTiles.Add(new GameTile(count++, 4, index));
             }
             for (index = 5; index <= 6; index++)
             {
-                gameTiles.Add(new SiBTile(count++, index, 10));
+                gameTiles.Add(new GameTile(count++, index, 10));
             }
             for (index = 9; index >= 6; index--)
             {
-                gameTiles.Add(new SiBTile(count++, 6, index));
+                gameTiles.Add(new GameTile(count++, 6, index));
             }
             for (index = 7; index <= 10; index++)
             {
-                gameTiles.Add(new SiBTile(count++, index, 6));
+                gameTiles.Add(new GameTile(count++, index, 6));
             }
-            gameTiles.Add(new SiBTile(count++, 10, 5));
+            gameTiles.Add(new GameTile(count++, 10, 5));
             // the crosses
             // the blue cross
             for (index = 9; index >= 6; index--)
             {
-                gameTiles.Add(new SiBTile(count++, index, 5));
+                gameTiles.Add(new GameTile(count++, index, 5));
             }
             // the yellow cross
             for (index = 1; index <= 4; index++)
             {
-                gameTiles.Add(new SiBTile(count++, 5, index));
+                gameTiles.Add(new GameTile(count++, 5, index));
             }
             // the green cross
             for (index = 1; index <= 4; index++)
             {
-                gameTiles.Add(new SiBTile(count++, index, 5));
+                gameTiles.Add(new GameTile(count++, index, 5));
             }
             // the red cross
             for (index = 9; index >= 6; index--)
             {
-                gameTiles.Add(new SiBTile(count++, 5, index));
+                gameTiles.Add(new GameTile(count++, 5, index));
             }
 
             return gameTiles;
@@ -517,7 +517,7 @@ namespace BoardGames.Controller
                 throw new Exception("Pawn cannot go further");
             }
 
-            SiBTile newTile = gameTiles[newTileId];
+            GameTile newTile = gameTiles[newTileId];
 
             // Eliminate pawn on the same tile if there is any
             int enemyPawnId = DeterminePawnIdBasedOnColumnAndRow(newTile.GetGridColumnInded(), newTile.GetGridRowIndex());
