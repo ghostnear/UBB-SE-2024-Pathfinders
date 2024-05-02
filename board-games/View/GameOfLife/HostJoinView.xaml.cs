@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace board_games.View
+namespace BoardGames.View
 {
     /// <summary>
     /// Interaction logic for HostJoinView.xaml

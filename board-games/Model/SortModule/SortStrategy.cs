@@ -1,4 +1,4 @@
-﻿namespace board_games.src.Sort
+﻿namespace BoardGames.src.Sort
 {
     public interface ISortStrategy<T>
         where T : IComparable<T>

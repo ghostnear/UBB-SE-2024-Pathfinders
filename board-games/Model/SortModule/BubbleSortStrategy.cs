@@ -1,4 +1,4 @@
-﻿namespace board_games.src.Sort
+﻿namespace BoardGames.src.Sort
 {
     public class BubbleSortStrategy<T> : ISortStrategy<T>
         where T : IComparable<T>

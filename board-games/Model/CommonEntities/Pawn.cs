@@ -1,20 +1,20 @@
-﻿namespace board_games.Model.CommonEntities
+﻿namespace BoardGames.Model.CommonEntities
 {
     internal class Pawn
     {
-        private int pawnId;
+        private int id;
         private Tile occupiedTile;
         private Player associatedPlayer;
 
         public Pawn(int pawnId, Tile occupiedTile)
         {
-            this.pawnId = pawnId;
+            id = pawnId;
             this.occupiedTile = occupiedTile;
         }
 
         public Pawn(int pawnId, Tile occupiedTile, Player associatedPlayer)
         {
-            this.pawnId = pawnId;
+            id = pawnId;
             this.occupiedTile = occupiedTile;
             this.associatedPlayer = associatedPlayer;
         }
@@ -23,18 +23,21 @@
         {
             occupiedTile = tileToChangeTo;
         }
-        public Tile GetOccupiedTile() {
+        public Tile GetOccupiedTile()
+        {
             return occupiedTile;
         }
-        public int GetPawnId() { return pawnId; }
-        public Player GetPlayer() {
+        public int GetPawnId()
+        {
+            return id;
+        }
+        public Player GetPlayer()
+        {
             return associatedPlayer;
         }
-
         public void SetAssociatedPlayer(Player associatedPlayer)
         {
             this.associatedPlayer = associatedPlayer;
         }
-
     }
 }

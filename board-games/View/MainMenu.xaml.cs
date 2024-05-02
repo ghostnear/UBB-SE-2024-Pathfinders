@@ -1,9 +1,9 @@
-﻿using board_games.View.Achievements;
-using board_games.View.SkillIssueBro.Menus;
+﻿using BoardGames.View.Achievements;
+using BoardGames.View.SkillIssueBro.Menus;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace board_games.View
+namespace BoardGames.View
 {
     /// <summary>
     /// Interaction logic for MainMenu.xaml

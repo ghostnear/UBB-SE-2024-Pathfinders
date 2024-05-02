@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace board_games
+namespace BoardGames
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace board_games.View.SkillIssueBro.Pawns
+namespace BoardGames.View.SkillIssueBro.Pawns
 {
     /// <summary>
     /// Interaction logic for PawnBlue.xaml

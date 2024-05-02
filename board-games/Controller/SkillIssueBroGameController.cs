@@ -1,7 +1,7 @@
-﻿using board_games.Model.CommonEntities;
-using board_games.Model.SkillIssueBroEntities;
+﻿using BoardGames.Model.CommonEntities;
+using BoardGames.Model.SkillIssueBroEntities;
 
-namespace board_games.Controller
+namespace BoardGames.Controller
 {
     internal class SkillIssueBroGameController
     {
@@ -23,7 +23,7 @@ namespace board_games.Controller
             gamePawns = new List<Pawn>();
             GeneratePawns();
 
-            // id is subject to change; can do an insert first and then retrieve the id (bcuz identity) 
+            // id is subject to change; can do an insert first and then retrieve the id (bcuz identity)
             // and create the object
             currentPlayerIndex = DetermineStartingPlayerIndex();
             gameBoard = new SkillIssueBoard(gameTiles, gamePawns, this.players, currentPlayerIndex);
@@ -41,9 +41,9 @@ namespace board_games.Controller
         {
             List<Pawn> bluePawns = new List<Pawn>();
             // 4 pawns on tiles 0-3
-            for (int i = 0; i < 4; i++)
+            for (int index = 0; index < 4; index++)
             {
-                Pawn newPawn = new Pawn(generatedPawnIds, gameTiles[i]);
+                Pawn newPawn = new Pawn(generatedPawnIds, gameTiles[index]);
                 generatedPawnIds++;
                 bluePawns.Add(newPawn);
             }
@@ -54,9 +54,9 @@ namespace board_games.Controller
         private List<Pawn> GenerateYellowPawns()
         {
             List<Pawn> yellowPawns = new List<Pawn>();
-            for (int i = 4; i < 8; i++)
+            for (int index = 4; index < 8; index++)
             {
-                Pawn newPawn = new Pawn(generatedPawnIds, gameTiles[i]);
+                Pawn newPawn = new Pawn(generatedPawnIds, gameTiles[index]);
                 generatedPawnIds++;
                 yellowPawns.Add(newPawn);
             }
@@ -86,7 +86,6 @@ namespace board_games.Controller
             }
             return redPawns;
         }
-
 
         private void GeneratePawns()
         {
@@ -157,7 +156,7 @@ namespace board_games.Controller
                 new SiBTile(3, 10, 1),
 
                 // the yellow corner
-                new SiBTile(4,0,0),
+                new SiBTile(4, 0, 0),
                 new SiBTile(5, 0, 1),
                 new SiBTile(6, 1, 0),
                 new SiBTile(7, 1, 1),
@@ -222,7 +221,6 @@ namespace board_games.Controller
                 gameTiles.Add(new SiBTile(count++, index, 6));
             }
             gameTiles.Add(new SiBTile(count++, 10, 5));
-
             // the crosses
             // the blue cross
             for (index = 9; index >= 6; index--)
@@ -273,7 +271,8 @@ namespace board_games.Controller
 
                 return diceValue + 16 - 1;
             }
-            else if (currentTileId <= 7) {
+            else if (currentTileId <= 7)
+            {
                 // yellow corner
                 if (diceValue == 12)
                 {
@@ -315,14 +314,16 @@ namespace board_games.Controller
                         }
                         return currentTileId;
                     }
-
                     if (currentTileId <= 55 && newTileId > 55)
                     {
                         if (newTileId <= 59)
                         {
                             return newTileId;
                         }
-                        return currentTileId;
+                        else
+                        {
+                            return currentTileId;
+                        }
                     }
                     break;
                 case "y":
@@ -334,16 +335,17 @@ namespace board_games.Controller
                         }
                         return currentTileId;
                     }
-
                     if (currentTileId <= 25 && newTileId > 25)
                     {
                         if (newTileId - 26 + 60 <= 63)
                         {
                             return newTileId - 26 + 60;
                         }
-                        return currentTileId;
+                        else
+                        {
+                            return currentTileId;
+                        }
                     }
-
                     break;
 
                 case "g":
@@ -355,16 +357,17 @@ namespace board_games.Controller
                         }
                         return currentTileId;
                     }
-
                     if (currentTileId <= 35 && newTileId > 35)
                     {
                         if (newTileId - 36 + 64 <= 67)
                         {
                             return newTileId - 36 + 64;
                         }
-                        return currentTileId;
+                        else
+                        {
+                            return currentTileId;
+                        }
                     }
-
                     break;
 
                 case "r":
@@ -382,9 +385,11 @@ namespace board_games.Controller
                         {
                             return newTileId - 46 + 68;
                         }
-                        return currentTileId;
+                        else
+                        {
+                            return currentTileId;
+                        }
                     }
-
                     break;
             }
 
@@ -398,17 +403,14 @@ namespace board_games.Controller
             {
                 return "b";
             }
-
             if (pawnId < 8)
             {
                 return "y";
             }
-
             if (pawnId < 12)
             {
                 return "g";
             }
-
             return "r";
         }
 
@@ -420,7 +422,7 @@ namespace board_games.Controller
         private int DetermineStartingPlayerIndex()
         {
             Random random = new Random();
-            int playerIndex = random.Next(0, players.Count-1);
+            int playerIndex = random.Next(0, players.Count - 1);
 
             return playerIndex;
         }
@@ -447,11 +449,11 @@ namespace board_games.Controller
                 occupiedTiles.Add(occupiedTile.GetTileId());
             }
 
-            for (int i = minId; i <= maxId; i++)
+            for (int index = minId; index <= maxId; index++)
             {
-                if (!occupiedTiles.Contains(i))
+                if (!occupiedTiles.Contains(index))
                 {
-                    return gameTiles[i];
+                    return gameTiles[index];
                 }
             }
             throw new Exception("Can't revive pawn??");
@@ -487,18 +489,15 @@ namespace board_games.Controller
 
         private void MovePawn(int pawnId, int leftDiceValue, int rightDiceValue, int playerId)
         {
-
             int diceValue = leftDiceValue + rightDiceValue;
             if (diceValue == 0)
             {
                 throw new Exception("Can't move pawn yet");
             }
-
             if (gamePawns[pawnId].GetPlayer().GetPlayerId() != playerId)
             {
                 throw new Exception("Not your pawn :(");
             }
-
 
             int currentTileId = gamePawns[pawnId].GetOccupiedTile().GetTileId();
 
@@ -531,7 +530,6 @@ namespace board_games.Controller
                 }
             }
             gamePawns[pawnId].ChangeTile(newTile);
-
             gameBoard.UpdatePawns(gamePawns);
         }
 

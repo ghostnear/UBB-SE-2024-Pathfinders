@@ -1,4 +1,4 @@
-﻿namespace board_games.Model.GameOfLife
+﻿namespace BoardGames.Model.GameOfLife
 {
     public class Spinner
     {

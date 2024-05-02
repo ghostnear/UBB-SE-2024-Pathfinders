@@ -1,6 +1,6 @@
-﻿using board_games.Model.CommonEntities;
+﻿using BoardGames.Model.CommonEntities;
 
-namespace board_games.Model.GameOfLife
+namespace BoardGames.Model.GameOfLife
 {
     internal class GameOfLifeBoard : Games
     {

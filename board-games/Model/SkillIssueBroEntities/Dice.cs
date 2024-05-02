@@ -1,4 +1,4 @@
-﻿namespace board_games.Model.SkillIssueBroEntities
+﻿namespace BoardGames.Model.SkillIssueBroEntities
 {
     internal class Dice
     {

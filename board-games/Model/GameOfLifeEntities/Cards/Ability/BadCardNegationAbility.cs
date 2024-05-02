@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using board_games.Model.GameOfLife.Cards.Ability;
+using BoardGames.Model.GameOfLife.Cards.Ability;
 
-namespace board_games.Model.GameOfLife.Cards
+namespace BoardGames.Model.GameOfLife.Cards
 {
     public class BadCardNegationAbility
     {

@@ -1,4 +1,4 @@
-<UserControl x:Class="board_games.View.Achievements.AchievementPage"
+<UserControl x:Class="BoardGames.View.Achievements.AchievementPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

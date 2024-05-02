@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace board_games.View.SkillIssueBro.Board
+namespace BoardGames.View.SkillIssueBro.Board
 {
     /// <summary>
     /// Interaction logic for Column2.xaml

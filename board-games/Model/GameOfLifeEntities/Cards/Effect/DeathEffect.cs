@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace board_games.Model.GameOfLife.Cards.Effect
+namespace BoardGames.Model.GameOfLife.Cards.Effect
 {
     public class DeathEffect : IEffect
     {

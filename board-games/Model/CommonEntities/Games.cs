@@ -1,4 +1,4 @@
-﻿namespace board_games.Model.CommonEntities
+﻿namespace BoardGames.Model.CommonEntities
 {
     internal abstract class Games
     {

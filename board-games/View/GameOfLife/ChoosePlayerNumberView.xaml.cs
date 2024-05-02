@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace board_games.View
+namespace BoardGames.View
 {
     /// <summary>
     /// Interaction logic for ChoosePlayerNumberView.xaml

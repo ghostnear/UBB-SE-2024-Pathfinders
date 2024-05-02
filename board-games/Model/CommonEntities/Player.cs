@@ -1,23 +1,23 @@
-﻿namespace board_games.Model.CommonEntities
+﻿namespace BoardGames.Model.CommonEntities
 {
     internal class Player
     {
-        private int playerId;
-        private string playerName;
+        private int id;
+        private string name;
 
         public Player(int playerId, string playerName)
         {
-            this.playerId = playerId;
-            this.playerName = playerName;
+            id = playerId;
+            name = playerName;
         }
 
         public string GetPlayerName()
         {
-            return playerName;
+            return name;
         }
-        public int GetPlayerId() { return playerId; }
-
-        /* todo: add completed achievements */
-
+        public int GetPlayerId()
+        {
+            return id;
+        }
     }
 }
