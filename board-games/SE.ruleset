@@ -35,11 +35,7 @@
         <Rule Id="SA1027"  Action="None" />          <!-- Use tabs correctly -->
         <Rule Id="SA1028"  Action="Error" />          <!-- Code should not contain trailing whitespace -->
     </Rules>
-<<<<<<< HEAD
-   
-=======
 
->>>>>>> japanese-goblin
     <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.ReadabilityRules">
         <Rule Id="SA1100"  Action="Error" />          <!-- Do not prefix calls with base unless local implementation exists -->
         <Rule Id="SA1101"  Action="None" />          <!-- Prefix local calls with this -->
@@ -81,11 +77,7 @@
         <Rule Id="SA1139"  Action="None" />          <!-- Use literal suffix notation instead of casting -->
         <Rule Id="SX1101"  Action="None" />             <!-- Do not prefix local calls with 'this.' -->
     </Rules>
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> japanese-goblin
     <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.OrderingRules">
         <Rule Id="SA1200"  Action="None" />          <!-- Using directives should be placed correctly -->
         <Rule Id="SA1201"  Action="None" />          <!-- Elements should appear in the correct order -->
@@ -143,11 +135,7 @@
         <Rule Id="SA1412"  Action="None"    />          <!-- Store files as UTF-8 with byte order mark -->
         <Rule Id="SA1413"  Action="None" />          <!-- Use trailing comma in multi-line initializers -->
     </Rules>
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> japanese-goblin
     <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.LayoutRules">
         <Rule Id="SA1500"  Action="Error" />          <!-- Braces for multi-line statements should not share line -->
         <Rule Id="SA1501"  Action="Error" />          <!-- Statement should not be on a single line -->
@@ -171,11 +159,7 @@
         <Rule Id="SA1519"  Action="None" />          <!-- Braces should not be omitted from multi-line child statement -->
         <Rule Id="SA1520"  Action="Error" />          <!-- Use braces consistently -->
     </Rules>
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> japanese-goblin
     <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.DocumentationRules">
         <Rule Id="SA1600"  Action="None" />          <!-- Elements should be documented -->
         <Rule Id="SA1601"  Action="None" />          <!-- Partial elements should be documented -->
@@ -230,8 +214,4 @@
         <Rule Id="SA1650"  Action="None" />             <!-- Element documentation should be spelled correctly -->
         <Rule Id="SA1651"  Action="None" />          <!-- Do not use placeholder elements -->
     </Rules>
-<<<<<<< HEAD
 </RuleSet>
-=======
-</RuleSet>
->>>>>>> japanese-goblin

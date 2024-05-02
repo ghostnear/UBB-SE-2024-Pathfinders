@@ -27,7 +27,7 @@ namespace board_games.View.SkillIssueBro.Board
             new Player(4, "Flower")
         };
 
-        private SkillIssueBroMainGameController skillIssueBroController;
+        private SkillIssueBroGameController skillIssueBroController;
         public GameBoardWindow()
         {
             InitializeComponent();
@@ -232,7 +232,7 @@ namespace board_games.View.SkillIssueBro.Board
         private void GameBoardWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // create the controller when the window is loaded
-            skillIssueBroController = new SkillIssueBroMainGameController(_players);
+            skillIssueBroController = new SkillIssueBroGameController(_players);
             SpawnPawns(skillIssueBroController.GetPawns());
             ShowCurrentPlayerColorEllipse();
 

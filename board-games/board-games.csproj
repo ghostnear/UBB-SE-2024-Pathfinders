@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
+	
   <ItemGroup>
     <None Remove="Resources\board_style_dark.png" />
     <None Remove="Resources\board_style_light.png" />
@@ -54,7 +54,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controller\" />
     <Folder Include="Model\Database\" />
   </ItemGroup>
 
@@ -87,8 +86,14 @@
 
   </ItemGroup>
 
+<<<<<<< HEAD:board-games/board-games/board-games.csproj
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<CodeAnalysisRuleSet>SE.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
+=======
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	    <CodeAnalysisRuleSet>SE.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+>>>>>>> japanese-goblin:board-games/board-games.csproj
 
 </Project>
