@@ -76,7 +76,7 @@ namespace board_games.Controller
             return GreenPawns;
         }
 
-        private  List<Pawn> GenerateRedPawns()
+        private List<Pawn> GenerateRedPawns()
         {
             List<Pawn> RedPawns = new List<Pawn>();
             for (int i = 12; i < 16; i++)

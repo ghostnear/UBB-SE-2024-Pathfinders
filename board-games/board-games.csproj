@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
+	
   <ItemGroup>
     <None Remove="Resources\board_style_dark.png" />
     <None Remove="Resources\board_style_light.png" />
@@ -58,6 +58,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
@@ -81,5 +85,9 @@
     <Resource Include="Resources\SpinnerValues\Spinner9.png" />
 
   </ItemGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	    <CodeAnalysisRuleSet>SE.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
 
 </Project>
