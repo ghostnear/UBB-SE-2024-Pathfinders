@@ -1,7 +1,7 @@
-﻿using board_games.View;
+﻿using BoardGames.View;
 using System.Windows;
 
-namespace board_games
+namespace BoardGames
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

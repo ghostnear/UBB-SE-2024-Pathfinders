@@ -1,12 +1,12 @@
-using board_games.Model.GameOfLife;
-using board_games.View;
+using BoardGames.Model.GameOfLife;
+using BoardGames.View;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace board_games
+namespace BoardGames
 {
     /// <summary>
     /// Interaction logic for GameOfLife_MainWindow.xaml

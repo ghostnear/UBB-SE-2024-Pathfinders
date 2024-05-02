@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace board_games.View.SkillIssueBro.Menus
+namespace BoardGames.View.SkillIssueBro.Menus
 {
     /// <summary>
     /// Interaction logic for SkillIssueBroMainMenu.xaml

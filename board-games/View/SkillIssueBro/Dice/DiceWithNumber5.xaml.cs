@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace board_games.View.SkillIssueBro.Dice
+namespace BoardGames.View.SkillIssueBro.Dice
 {
     /// <summary>
     /// Interaction logic for DiceWithNumber5.xaml

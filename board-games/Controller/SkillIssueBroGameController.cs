@@ -1,33 +1,32 @@
-﻿using board_games.Model.CommonEntities;
-using board_games.Model.SkillIssueBroEntities;
+﻿using BoardGames.Model.CommonEntities;
+using BoardGames.Model.SkillIssueBroEntities;
 
-namespace board_games.Controller
+namespace BoardGames.Controller
 {
     internal class SkillIssueBroGameController
     {
-        private SkillIssueBoard _gameBoard;
-        private List<Player> _players;
-        private List<SiBTile> _gameTiles;
-        private List<Pawn> _gamePawns;
+        private SkillIssueBoard gameBoard;
+        private List<Player> players;
+        private List<SiBTile> gameTiles;
+        private List<Pawn> gamePawns;
 
         private static int generatedPawnIds = 0;
-        private int _currentPlayerIndex;
+        private int currentPlayerIndex;
 
         public delegate void PawnKilledEventHandler(object sender);
         public event PawnKilledEventHandler PawnKilled;
 
         public SkillIssueBroGameController(List<Player> players)
         {
-            _players = players;
-            _gameTiles =  GenerateTiles();
-            _gamePawns = new List<Pawn>();
+            this.players = players;
+            gameTiles = GenerateTiles();
+            gamePawns = new List<Pawn>();
             GeneratePawns();
 
-            // id is subject to change; can do an insert first and then retrieve the id (bcuz identity) 
+            // id is subject to change; can do an insert first and then retrieve the id (bcuz identity)
             // and create the object
-
-            _currentPlayerIndex = DetermineStartingPlayerIndex();
-            _gameBoard = new SkillIssueBoard(_gameTiles, _gamePawns, _players,_currentPlayerIndex);
+            currentPlayerIndex = DetermineStartingPlayerIndex();
+            gameBoard = new SkillIssueBoard(gameTiles, gamePawns, this.players, currentPlayerIndex);
         }
 
         protected virtual void OnPawnKilled()
@@ -42,9 +41,9 @@ namespace board_games.Controller
         {
             List<Pawn> bluePawns = new List<Pawn>();
             // 4 pawns on tiles 0-3
-            for(int i=0; i < 4; i++)
+            for (int index = 0; index < 4; index++)
             {
-                Pawn newPawn = new Pawn(generatedPawnIds, _gameTiles[i]);
+                Pawn newPawn = new Pawn(generatedPawnIds, gameTiles[index]);
                 generatedPawnIds++;
                 bluePawns.Add(newPawn);
             }
@@ -55,9 +54,9 @@ namespace board_games.Controller
         private List<Pawn> GenerateYellowPawns()
         {
             List<Pawn> yellowPawns = new List<Pawn>();
-            for(int i=4; i< 8;i++)
+            for (int index = 4; index < 8; index++)
             {
-                Pawn newPawn = new Pawn(generatedPawnIds, _gameTiles[i]);
+                Pawn newPawn = new Pawn(generatedPawnIds, gameTiles[index]);
                 generatedPawnIds++;
                 yellowPawns.Add(newPawn);
             }
@@ -66,40 +65,39 @@ namespace board_games.Controller
 
         private List<Pawn> GenerateGreenPawns()
         {
-            List<Pawn> GreenPawns = new List<Pawn>();
+            List<Pawn> greenPawns = new List<Pawn>();
             for (int i = 8; i < 12; i++)
             {
-                Pawn newPawn = new Pawn(generatedPawnIds, _gameTiles[i]);
+                Pawn newPawn = new Pawn(generatedPawnIds, gameTiles[i]);
                 generatedPawnIds++;
-                GreenPawns.Add(newPawn);
+                greenPawns.Add(newPawn);
             }
-            return GreenPawns;
+            return greenPawns;
         }
 
         private List<Pawn> GenerateRedPawns()
         {
-            List<Pawn> RedPawns = new List<Pawn>();
+            List<Pawn> redPawns = new List<Pawn>();
             for (int i = 12; i < 16; i++)
             {
-                Pawn newPawn = new Pawn(generatedPawnIds, _gameTiles[i]);
+                Pawn newPawn = new Pawn(generatedPawnIds, gameTiles[i]);
                 generatedPawnIds++;
-                RedPawns.Add(newPawn);
+                redPawns.Add(newPawn);
             }
-            return RedPawns;
+            return redPawns;
         }
-
 
         private void GeneratePawns()
         {
             // associate pawns depending on the number of players
-            List<string> colors = new List<string>{ "Blue", "Yellow", "Green", "Red" };
+            List<string> colors = new List<string> { "Blue", "Yellow", "Green", "Red" };
             List<Pawn> bluePawns, yellowPawns, greenPawns, redPawns;
             bluePawns = new List<Pawn>();
             yellowPawns = new List<Pawn>();
             greenPawns = new List<Pawn>();
             redPawns = new List<Pawn>();
 
-            switch (_players.Count)
+            switch (players.Count)
             {
                 case 2:
                     bluePawns = GenerateBluePawns();
@@ -117,32 +115,32 @@ namespace board_games.Controller
                     redPawns = GenerateRedPawns();
                     break;
             }
-            foreach(Pawn bluePawn in bluePawns)
+            foreach (Pawn bluePawn in bluePawns)
             {
-                bluePawn.SetAssociatedPlayer(_players[0]);
-                _gamePawns.Add(bluePawn);
+                bluePawn.SetAssociatedPlayer(players[0]);
+                gamePawns.Add(bluePawn);
             }
 
             foreach (Pawn yellowPawn in yellowPawns)
             {
-                yellowPawn.SetAssociatedPlayer(_players[1]);
-                _gamePawns.Add(yellowPawn);
+                yellowPawn.SetAssociatedPlayer(players[1]);
+                gamePawns.Add(yellowPawn);
             }
 
-            if(_players.Count > 2)
+            if (players.Count > 2)
             {
-                foreach(Pawn greenPawn in greenPawns)
+                foreach (Pawn greenPawn in greenPawns)
                 {
-                    greenPawn.SetAssociatedPlayer(_players[2]);
-                    _gamePawns.Add(greenPawn);
+                    greenPawn.SetAssociatedPlayer(players[2]);
+                    gamePawns.Add(greenPawn);
                 }
             }
-            if(_players.Count > 3)
+            if (players.Count > 3)
             {
-                foreach(Pawn redPawn in redPawns)
+                foreach (Pawn redPawn in redPawns)
                 {
-                    redPawn.SetAssociatedPlayer(_players[3]);
-                    _gamePawns.Add(redPawn);
+                    redPawn.SetAssociatedPlayer(players[3]);
+                    gamePawns.Add(redPawn);
                 }
             }
         }
@@ -151,25 +149,25 @@ namespace board_games.Controller
         {
             List<SiBTile> gameTiles =
             [
-                //the blue corner
-                new SiBTile(0, 9, 0), //id, row, column
+                // the blue corner
+                new SiBTile(0, 9, 0), // id, row, column
                 new SiBTile(1, 9, 1),
                 new SiBTile(2, 10, 0),
                 new SiBTile(3, 10, 1),
 
-                //the yellow corner
-                new SiBTile(4,0,0),
+                // the yellow corner
+                new SiBTile(4, 0, 0),
                 new SiBTile(5, 0, 1),
                 new SiBTile(6, 1, 0),
                 new SiBTile(7, 1, 1),
 
-                //the green corner
+                // the green corner
                 new SiBTile(8, 0, 9),
                 new SiBTile(9, 0, 10),
                 new SiBTile(10, 1, 9),
                 new SiBTile(11, 1, 10),
 
-                //the red corner
+                // the red corner
                 new SiBTile(12, 9, 9),
                 new SiBTile(13, 9, 10),
                 new SiBTile(14, 10, 9),
@@ -223,23 +221,23 @@ namespace board_games.Controller
                 gameTiles.Add(new SiBTile(count++, index, 6));
             }
             gameTiles.Add(new SiBTile(count++, 10, 5));
-            //the crosses
-            //the blue cross
+            // the crosses
+            // the blue cross
             for (index = 9; index >= 6; index--)
             {
                 gameTiles.Add(new SiBTile(count++, index, 5));
             }
-            //the yellow cross
+            // the yellow cross
             for (index = 1; index <= 4; index++)
             {
                 gameTiles.Add(new SiBTile(count++, 5, index));
             }
-            //the green cross
+            // the green cross
             for (index = 1; index <= 4; index++)
             {
                 gameTiles.Add(new SiBTile(count++, index, 5));
             }
-            //the red cross
+            // the red cross
             for (index = 9; index >= 6; index--)
             {
                 gameTiles.Add(new SiBTile(count++, 5, index));
@@ -252,31 +250,30 @@ namespace board_games.Controller
             /*
              * Pawns are in order Blue x 4, Yellow x 4, Green x 4, Red x 4
              */
-            return _gamePawns;
+            return gamePawns;
         }
 
         public int RollDice()
         {
-            return _gameBoard.GetDice().RollDice();
+            return gameBoard.GetDice().RollDice();
         }
 
         private int ComputeNewTileId(string pawnColor, int currentTileId, int diceValue)
         {
-            //16 first path tile
+            // 16 first path tile
             if (currentTileId <= 3)
             {
-                //blue corner
-
-                if(diceValue == 12)
+                // blue corner
+                if (diceValue == 12)
                 {
                     return 16;
                 }
 
                 return diceValue + 16 - 1;
             }
-            else if(currentTileId<=7) {
-                //yellow corner
-
+            else if (currentTileId <= 7)
+            {
+                // yellow corner
                 if (diceValue == 12)
                 {
                     return 26;
@@ -293,9 +290,8 @@ namespace board_games.Controller
 
                 return diceValue + 36 - 1;
             }
-            else if(currentTileId <= 15)
+            else if (currentTileId <= 15)
             {
-
                 if (diceValue == 12)
                 {
                     return 46;
@@ -318,16 +314,18 @@ namespace board_games.Controller
                         }
                         return currentTileId;
                     }
-
                     if (currentTileId <= 55 && newTileId > 55)
                     {
                         if (newTileId <= 59)
+                        {
                             return newTileId;
-                        else return currentTileId;
+                        }
+                        else
+                        {
+                            return currentTileId;
+                        }
                     }
-
                     break;
-            
                 case "y":
                     if (currentTileId >= 60 && currentTileId <= 63)
                     {
@@ -337,14 +335,17 @@ namespace board_games.Controller
                         }
                         return currentTileId;
                     }
-
                     if (currentTileId <= 25 && newTileId > 25)
                     {
                         if (newTileId - 26 + 60 <= 63)
+                        {
                             return newTileId - 26 + 60;
-                        else return currentTileId;
+                        }
+                        else
+                        {
+                            return currentTileId;
+                        }
                     }
-
                     break;
 
                 case "g":
@@ -356,14 +357,17 @@ namespace board_games.Controller
                         }
                         return currentTileId;
                     }
-
                     if (currentTileId <= 35 && newTileId > 35)
                     {
                         if (newTileId - 36 + 64 <= 67)
+                        {
                             return newTileId - 36 + 64;
-                        else return currentTileId;
+                        }
+                        else
+                        {
+                            return currentTileId;
+                        }
                     }
-
                     break;
 
                 case "r":
@@ -378,52 +382,60 @@ namespace board_games.Controller
                     if (currentTileId <= 45 && newTileId > 45)
                     {
                         if (newTileId - 46 + 68 <= 71)
+                        {
                             return newTileId - 46 + 68;
-                        else return currentTileId;
+                        }
+                        else
+                        {
+                            return currentTileId;
+                        }
                     }
-
                     break;
             }
 
             // Return tile only in valid range.
-            return (newTileId > 55) ? newTileId % 56 + 16 : newTileId;
+            return (newTileId > 55) ? (newTileId % 56) + 16 : newTileId;
         }
 
         private string PawnColor(int pawnId)
         {
-            if(pawnId < 4)
+            if (pawnId < 4)
+            {
                 return "b";
-            if(pawnId < 8)
+            }
+            if (pawnId < 8)
+            {
                 return "y";
-            if(pawnId < 12)
+            }
+            if (pawnId < 12)
+            {
                 return "g";
-           
+            }
             return "r";
         }
 
         private int DetermineNextPlayerIndex()
         {
-            return (_currentPlayerIndex + 1) % _players.Count;
+            return (currentPlayerIndex + 1) % players.Count;
         }
 
         private int DetermineStartingPlayerIndex()
         {
             Random random = new Random();
-            int playerIndex = random.Next(0, _players.Count-1);
+            int playerIndex = random.Next(0, players.Count - 1);
 
             return playerIndex;
         }
 
         private int DeterminePawnIdBasedOnColumnAndRow(int column, int row)
         {
-            foreach(Pawn pawn in _gamePawns)
+            foreach (Pawn pawn in gamePawns)
             {
                 Tile occupiedTile = pawn.GetOccupiedTile();
-                if(occupiedTile.GetCenterXPosition() == column && occupiedTile.GetCenterYPosition() == row)
+                if (occupiedTile.GetCenterXPosition() == column && occupiedTile.GetCenterYPosition() == row)
                 {
                     return pawn.GetPawnId();
                 }
-                
             }
             return -1;
         }
@@ -431,17 +443,17 @@ namespace board_games.Controller
         private Tile FindEmptyHomeTileInRange(int minId, int maxId)
         {
             List<int> occupiedTiles = new List<int>();
-            foreach(Pawn pawn in _gamePawns)
+            foreach (Pawn pawn in gamePawns)
             {
                 Tile occupiedTile = pawn.GetOccupiedTile();
                 occupiedTiles.Add(occupiedTile.GetTileId());
             }
 
-            for(int i=minId; i<=maxId; i++)
+            for (int index = minId; index <= maxId; index++)
             {
-                if (!occupiedTiles.Contains(i))
+                if (!occupiedTiles.Contains(index))
                 {
-                    return _gameTiles[i];
+                    return gameTiles[index];
                 }
             }
             throw new Exception("Can't revive pawn??");
@@ -468,34 +480,31 @@ namespace board_games.Controller
                     break;
             }
 
-            _gamePawns[pawnId].ChangeTile(newTile);
+            gamePawns[pawnId].ChangeTile(newTile);
 
-            _gameBoard.UpdatePawns(_gamePawns);
+            gameBoard.UpdatePawns(gamePawns);
 
             OnPawnKilled();
         }
 
         private void MovePawn(int pawnId, int leftDiceValue, int rightDiceValue, int playerId)
         {
-
             int diceValue = leftDiceValue + rightDiceValue;
-            if(diceValue == 0)
+            if (diceValue == 0)
             {
                 throw new Exception("Can't move pawn yet");
             }
-
-            if (_gamePawns[pawnId].GetPlayer().GetPlayerId() != playerId)
+            if (gamePawns[pawnId].GetPlayer().GetPlayerId() != playerId)
             {
                 throw new Exception("Not your pawn :(");
             }
 
+            int currentTileId = gamePawns[pawnId].GetOccupiedTile().GetTileId();
 
-            int currentTileId = _gamePawns[pawnId].GetOccupiedTile().GetTileId();
-
-            if(currentTileId < 16)
+            if (currentTileId < 16)
             {
                 // pawn still on home tiles
-                if(rightDiceValue != 6 || leftDiceValue != 6)
+                if (rightDiceValue != 6 || leftDiceValue != 6)
                 {
                     throw new Exception("You have to roll two 6s!");
                 }
@@ -503,44 +512,42 @@ namespace board_games.Controller
 
             int newTileId = ComputeNewTileId(PawnColor(pawnId), currentTileId, diceValue);
 
-            if(newTileId == currentTileId)
+            if (newTileId == currentTileId)
             {
                 throw new Exception("Pawn cannot go further");
             }
 
-            SiBTile newTile = _gameTiles[newTileId];
+            SiBTile newTile = gameTiles[newTileId];
 
             // Eliminate pawn on the same tile if there is any
             int enemyPawnId = DeterminePawnIdBasedOnColumnAndRow(newTile.GetGridColumnInded(), newTile.GetGridRowIndex());
-            if(enemyPawnId != -1)
+            if (enemyPawnId != -1)
             {
-                Pawn enemyPawn = _gamePawns[enemyPawnId];
-                if(enemyPawn.GetPlayer().GetPlayerId() != playerId)
+                Pawn enemyPawn = gamePawns[enemyPawnId];
+                if (enemyPawn.GetPlayer().GetPlayerId() != playerId)
                 {
                     KillPawn(enemyPawnId);
                 }
             }
-            
-            _gamePawns[pawnId].ChangeTile(newTile);
-
-            _gameBoard.UpdatePawns(_gamePawns);
+            gamePawns[pawnId].ChangeTile(newTile);
+            gameBoard.UpdatePawns(gamePawns);
         }
 
         public void MovePawnBasedOnClick(int column, int row, int leftDiceValue, int rightDiceValue)
         {
             int pawnId = DeterminePawnIdBasedOnColumnAndRow(column, row);
 
-            MovePawn(pawnId, leftDiceValue, rightDiceValue, _players[_currentPlayerIndex].GetPlayerId());
+            MovePawn(pawnId, leftDiceValue, rightDiceValue, players[currentPlayerIndex].GetPlayerId());
         }
 
         public void ChangeCurrentPlayer()
         {
-            _currentPlayerIndex = DetermineNextPlayerIndex();
+            currentPlayerIndex = DetermineNextPlayerIndex();
         }
 
         public string GetCurrentPlayerColor()
         {
-            switch (_currentPlayerIndex)
+            switch (currentPlayerIndex)
             {
                 case 0:
                     return "b";

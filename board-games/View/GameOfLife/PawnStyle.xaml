@@ -1,10 +1,10 @@
-﻿<Page x:Class="board_games.View.GameOfLife.PawnStyle"
+﻿<Page x:Class="BoardGames.View.GameOfLife.PawnStyle"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:board_games.View.GameOfLife"
-      xmlns:Pawn="clr-namespace:board_games.View.GameOfLife.Pawns"
+      xmlns:local="clr-namespace:BoardGames.View.GameOfLife"
+      xmlns:Pawn="clr-namespace:BoardGames.View.GameOfLife.Pawns"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PawnStyle">

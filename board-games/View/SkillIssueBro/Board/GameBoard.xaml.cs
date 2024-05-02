@@ -1,8 +1,8 @@
-﻿using board_games.View.SkillIssueBro.Pawns;
+﻿using BoardGames.View.SkillIssueBro.Pawns;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace board_games.View.SkillIssueBro.Board
+namespace BoardGames.View.SkillIssueBro.Board
 {
     /// <summary>
     /// Interaction logic for GameBoard.xaml

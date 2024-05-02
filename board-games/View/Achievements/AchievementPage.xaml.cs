@@ -1,7 +1,7 @@
-﻿using board_games.Model.CommonEntities;
+﻿using BoardGames.Model.CommonEntities;
 using System.Windows.Controls;
 
-namespace board_games.View.Achievements
+namespace BoardGames.View.Achievements
 {
     /// <summary>
     /// Interaction logic for AchievementPage.xaml

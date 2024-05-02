@@ -1,9 +1,9 @@
-﻿using board_games.View.GameOfLife;
+﻿using BoardGames.View.GameOfLife;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace board_games.View
+namespace BoardGames.View
 {
     /// <summary>
     /// Interaction logic for StartView.xaml

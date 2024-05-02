@@ -1,13 +1,13 @@
-﻿using board_games.Controller;
-using board_games.Model.CommonEntities;
-using board_games.View.SkillIssueBro.Dice;
-using board_games.View.SkillIssueBro.Pawns;
+﻿using BoardGames.Controller;
+using BoardGames.Model.CommonEntities;
+using BoardGames.View.SkillIssueBro.Dice;
+using BoardGames.View.SkillIssueBro.Pawns;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace board_games.View.SkillIssueBro.Board
+namespace BoardGames.View.SkillIssueBro.Board
 {
     /// <summary>
     /// Interaction logic for GameBoardWindow.xaml

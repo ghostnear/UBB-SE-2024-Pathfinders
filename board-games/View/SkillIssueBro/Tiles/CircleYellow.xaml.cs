@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace board_games.View.SkillIssueBro.Tiles
+namespace BoardGames.View.SkillIssueBro.Tiles
 {
     /// <summary>
     /// Interaction logic for CircleYellow.xaml

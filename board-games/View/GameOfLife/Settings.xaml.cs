@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace board_games.View.GameOfLife
+namespace BoardGames.View.GameOfLife
 {
     /// <summary>
     /// Interaction logic for Settings.xaml

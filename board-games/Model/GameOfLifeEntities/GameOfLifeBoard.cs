@@ -1,26 +1,26 @@
-﻿using board_games.Model.CommonEntities;
+﻿using BoardGames.Model.CommonEntities;
 
-namespace board_games.Model.GameOfLife
+namespace BoardGames.Model.GameOfLife
 {
     internal class GameOfLifeBoard : Games
     {
-        private readonly Spinner _spinner;
-        private List<Player> _players;
+        private readonly Spinner spinner;
+        private List<Player> players;
 
         public GameOfLifeBoard()
         {
-            _spinner = new Spinner();
-            _players = new List<Player>();
+            spinner = new Spinner();
+            players = new List<Player>();
         }
 
         public override List<Player> GetPlayers()
         {
-            return _players;
+            return players;
         }
 
         public int SpinSpinner()
         {
-            return _spinner.RollSpinner();
+            return spinner.RollSpinner();
         }
     }
 }

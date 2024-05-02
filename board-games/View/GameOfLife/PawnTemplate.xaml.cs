@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace board_games.View.GameOfLife.Pawns
+namespace BoardGames.View.GameOfLife.Pawns
 {
     /// <summary>
     /// Interaction logic for PawnTemplate.xaml

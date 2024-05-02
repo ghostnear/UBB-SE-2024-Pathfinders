@@ -1,8 +1,8 @@
-﻿namespace board_games.Model.GameOfLife
+﻿namespace BoardGames.Model.GameOfLife
 {
     public class Spinner
     {
-        private static readonly IDictionary<int, int> resultProbabilitiesAsPercentages = new Dictionary<int, int>()
+        private static readonly IDictionary<int, int> ResultProbabilitiesAsPercentages = new Dictionary<int, int>()
         {
             [1] = 19,
             [2] = 17,
@@ -15,29 +15,29 @@
             [9] = 5,
             [10] = 4
         };
-        private Random _randomizer;
+        private Random randomizer;
 
         public Spinner()
         {
-            _randomizer = new Random();
+            randomizer = new Random();
         }
 
         public int RollSpinner()
         {
-            int randomPercentage = _randomizer.Next(1, 100);
+            int randomPercentage = randomizer.Next(1, 100);
 
-            int valueToBeReturned = 1, probabilitySumUntilValue = resultProbabilitiesAsPercentages[1];
+            int valueToBeReturned = 1, probabilitySumUntilValue = ResultProbabilitiesAsPercentages[1];
             while (probabilitySumUntilValue < randomPercentage)
             {
                 valueToBeReturned++;
-                probabilitySumUntilValue += resultProbabilitiesAsPercentages[valueToBeReturned];
+                probabilitySumUntilValue += ResultProbabilitiesAsPercentages[valueToBeReturned];
             }
             return valueToBeReturned;
         }
 
         public Random GetRandomizer()
         {
-            return _randomizer;
+            return randomizer;
         }
     }
 }

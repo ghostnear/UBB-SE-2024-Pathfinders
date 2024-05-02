@@ -1,4 +1,4 @@
-﻿namespace board_games.src.FeatureToggle
+﻿namespace BoardGames.src.FeatureToggle
 {
     public class FeatureToggle
     {

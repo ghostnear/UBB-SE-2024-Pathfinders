@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using board_games.View.SkillIssueBro.Board;
+using BoardGames.View.SkillIssueBro.Board;
 
-namespace board_games.View.SkillIssueBro.Menus
+namespace BoardGames.View.SkillIssueBro.Menus
 {
     /// <summary>
     /// Interaction logic for SkillIssueBroJoinWithCode.xaml
