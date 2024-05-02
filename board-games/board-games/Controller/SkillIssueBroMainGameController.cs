@@ -11,10 +11,8 @@ namespace board_games.Controller
         private List<Pawn> _pawns;
         private int generatedPawnIds = 0; // temporary solution, fix if needed or delete comment
         private int _currentPlayerIndex;
-
         public delegate void PawnKilledEventHandler(object sender);
         public event PawnKilledEventHandler PawnKilled;
-
 
         public SkillIssueBroMainGameController(List<Player> players)
         {
@@ -244,12 +242,7 @@ namespace board_games.Controller
             {
                 siBTiles.Add(new SiBTile(count++, 5, i));
             }
-
-
             return siBTiles;
-
-
-
         }
         public List<Pawn> GetPawns()
         {
