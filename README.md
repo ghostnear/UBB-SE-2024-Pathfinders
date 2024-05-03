@@ -3,7 +3,7 @@
 ### By the refactoring team:
 
 - Removed a lot of unused code.
-- Changed the names of the files to follow a more natural naming scheme and to respect the specified code style standard.
+- Changed the names of the files and the variables to follow a more natural naming scheme and to respect the specified code style standard.
 
 All of these without changing the core functionality of the app (except that it now doesnt create a random empty file).
 
