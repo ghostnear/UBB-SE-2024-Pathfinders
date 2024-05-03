@@ -7,7 +7,7 @@ namespace BoardGames.View
     /// </summary>
     public partial class HostJoinView
     {
-        //StartView instance = new StartView();
+        // StartView instance = new StartView();
         // Should we store PAGE INSTANCES, or create a new one for every navigation?
         // Does it deppend on the window?
         public HostJoinView()

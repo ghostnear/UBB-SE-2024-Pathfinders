@@ -1,7 +1,7 @@
-﻿using BoardGames.View.Achievements;
-using BoardGames.View.SkillIssueBro.Menus;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using BoardGames.View.Achievements;
+using BoardGames.View.SkillIssueBro.Menus;
 
 namespace BoardGames.View
 {

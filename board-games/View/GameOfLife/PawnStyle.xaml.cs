@@ -12,12 +12,12 @@ namespace BoardGames.View.GameOfLife
         // !!! After choosing pawn style, change should be sent to DB!
         private readonly Dictionary<string, Color> pawnColors = new ()
         {
-            {"Red", Color.FromRgb(228, 6, 19) },
-            {"Orange", Color.FromRgb(255, 133, 0) },
-            {"Yellow", Color.FromRgb(255, 228, 0) },
-            {"Green", Color.FromRgb(0, 148, 64)},
-            {"Blue", Color.FromRgb(83, 74, 153) },
-            {"Pink", Color.FromRgb(224, 0, 143) },
+            { "Red", Color.FromRgb(228, 6, 19) },
+            { "Orange", Color.FromRgb(255, 133, 0) },
+            { "Yellow", Color.FromRgb(255, 228, 0) },
+            { "Green", Color.FromRgb(0, 148, 64) },
+            { "Blue", Color.FromRgb(83, 74, 153) },
+            { "Pink", Color.FromRgb(224, 0, 143) },
         };
         private int displayedColorIndex = 0;
 
@@ -40,7 +40,7 @@ namespace BoardGames.View.GameOfLife
         private void ArrowLeftButton_Click(object sender, RoutedEventArgs e)
         {
             displayedColorIndex = (displayedColorIndex - 1 + pawnColors.Count) % pawnColors.Count;
-            ChangeDisplayedPawnColor (displayedColorIndex);
+            ChangeDisplayedPawnColor(displayedColorIndex);
         }
         private void ChangeDisplayedPawnColor(int index)
         {

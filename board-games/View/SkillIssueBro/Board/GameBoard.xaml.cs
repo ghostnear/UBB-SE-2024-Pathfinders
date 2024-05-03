@@ -1,6 +1,6 @@
-﻿using BoardGames.View.SkillIssueBro.Pawns;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using BoardGames.View.SkillIssueBro.Pawns;
 
 namespace BoardGames.View.SkillIssueBro.Board
 {

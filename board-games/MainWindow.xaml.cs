@@ -1,5 +1,5 @@
-﻿using BoardGames.View;
-using System.Windows;
+﻿using System.Windows;
+using BoardGames.View;
 
 namespace BoardGames
 {

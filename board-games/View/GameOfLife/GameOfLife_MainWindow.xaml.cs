@@ -1,10 +1,10 @@
-using BoardGames.Model.GameOfLife;
-using BoardGames.View;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BoardGames.Model.GameOfLife;
+using BoardGames.View;
 
 namespace BoardGames
 {
@@ -69,7 +69,7 @@ namespace BoardGames
             int nextIndex = 0;
             List<int> indicesToColor = GenerateRandomIndices(TotalNumberOfEventTiles + NumberOfGreenTiles);
             List<int> indicesOfGreenTiles = indicesToColor.GetRange(nextIndex, NumberOfGreenTiles);
-            ColorTiles(indicesOfGreenTiles, Color.FromRgb(150,187,32));
+            ColorTiles(indicesOfGreenTiles, Color.FromRgb(150, 187, 32));
             nextIndex = NumberOfGreenTiles;
             List<int> indicesOfRedTiles = indicesToColor.GetRange(nextIndex, NumberOfEventTilesByCategory);
             ColorTiles(indicesOfRedTiles, Color.FromRgb(229, 51, 61));
@@ -121,7 +121,6 @@ namespace BoardGames
             ImageControl.Source = spinnerDisplay;
         }
     }
-
 }
 
 

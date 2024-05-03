@@ -17,12 +17,11 @@ namespace BoardGames.View.Achievements
         public static readonly DependencyProperty AchievementData = DependencyProperty.Register(
             "Achievement",
             typeof(Achievement), typeof(AchievementTile),
-            new PropertyMetadata(null, OnAchievementChanged)
-        );
+            new PropertyMetadata(null, OnAchievementChanged));
 
         internal Achievement Achievement
         {
-            get { return (Achievement) GetValue(AchievementData); }
+            get { return (Achievement)GetValue(AchievementData); }
             set { SetValue(AchievementData, value); }
         }
 
@@ -40,6 +39,5 @@ namespace BoardGames.View.Achievements
                 GameTextBlock.Text = Achievement.GetAchievementGameCategory().ToString();
             }
         }
-
     }
 }
