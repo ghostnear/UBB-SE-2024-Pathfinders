@@ -3,6 +3,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BoardGames.Controller;
 using BoardGames.Model.GameOfLife;
 using BoardGames.View;
 
@@ -23,6 +24,9 @@ namespace BoardGames
         private BitmapImage spinnerDisplay;
         // new BitmapImage(new Uri("../../Resources/SpinnerValues/Spinner1.png", UriKind.Relative));
         private const string CommonFileRoot = "../../Resources/SpinnerValues/Spinner";
+
+        private readonly GameOfLifeController controller = new GameOfLifeController();
+
         public GameOfLife_MainWindow()
         {
             InitializeComponent();
@@ -39,31 +43,18 @@ namespace BoardGames
         /// </exception>
         private List<int> GenerateRandomIndices(int numberOfIndices)
         {
-            if (numberOfIndices > NumberOfTiles)
+            try
             {
-                throw new ArgumentOutOfRangeException("The number of randomly generated indices cannot be larger than the total number of tiles.");
+                var indices = controller.GenerateRandomIndices(numberOfIndices, NumberOfTiles);
+                return indices;
             }
-            if (numberOfIndices < 0)
+            catch (ArgumentOutOfRangeException e)
             {
-                throw new ArgumentOutOfRangeException("The number of randomly generated indices cannot be smaller than 0");
+                MessageBox.Show(e.Message);
+                return null;
             }
-            var lowerBound = 1;
-            var upperBound = NumberOfTiles + 1;
-            List<int> randomNumbersList = new List<int>();
-            Random random = new Random();
-
-            while (numberOfIndices > 0)
-            {
-                var randomNumber = random.Next(lowerBound, upperBound);
-
-                if (!randomNumbersList.Contains(randomNumber))
-                {
-                    randomNumbersList.Add(randomNumber);
-                    numberOfIndices--;
-                }
-            }
-            return randomNumbersList;
         }
+
         private void GameOfLife_MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             int nextIndex = 0;
@@ -122,5 +113,3 @@ namespace BoardGames
         }
     }
 }
-
-

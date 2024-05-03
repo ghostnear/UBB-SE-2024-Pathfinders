@@ -3,9 +3,11 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using BoardGames.Controller;
+using BoardGames.Controller;
 using BoardGames.Model.CommonEntities;
 using BoardGames.View.SkillIssueBro.Dice;
 using BoardGames.View.SkillIssueBro.Pawns;
+
 namespace BoardGames.View.SkillIssueBro.Board
 {
     /// <summary>
@@ -28,6 +30,7 @@ namespace BoardGames.View.SkillIssueBro.Board
         };
 
         private SkillIssueBroGameController skillIssueBroController;
+
         public GameBoardWindow()
         {
             InitializeComponent();
@@ -77,6 +80,8 @@ namespace BoardGames.View.SkillIssueBro.Board
             leftDiceValue = 0;
             rightDiceValue = 0;
 
+            // this is not business logic, just that after every turn, they cleared the whole
+            // grid and spawned the pawns again with their new positions
             ClearPawnChildren();
             SpawnPawns(skillIssueBroController.GetPawns());
             HideDice();
