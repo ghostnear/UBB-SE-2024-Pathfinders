@@ -6,7 +6,7 @@ using BoardGames.Model.CommonEntities;
 internal class GamesTests
 {
     [Test]
-    public void GetPlayers_ReturnsPlayers()
+    public void GetPlayers_WhenCalled_ReturnsPlayers()
     {
         // Arrange
         var mockGame = new Mock<Games>() { CallBase = true };

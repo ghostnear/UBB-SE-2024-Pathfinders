@@ -5,7 +5,7 @@ using BoardGames.Model.CommonEntities;
 internal class PlayerTests
 {
     [Test]
-    public void PlayerCreation_ValidInputs_CreatesCorrectly()
+    public void PlayerCreation_WithValidInputs_CreatesCorrectly()
     {
         // Arrange
         var playerId = 1;
@@ -15,12 +15,12 @@ internal class PlayerTests
         var player = new Player(playerId, playerName);
 
         // Assert
-        Assert.That(player.GetPlayerId(), Is.EqualTo(playerId), "Player ID should match.");
-        Assert.That(player.GetPlayerName(), Is.EqualTo(playerName), "Player name should match.");
+        Assert.That(player.GetPlayerId(), Is.EqualTo(playerId), "Should create player with correct ID.");
+        Assert.That(player.GetPlayerName(), Is.EqualTo(playerName), "Should create player with correct name.");
     }
 
     [Test]
-    public void GetPlayerId_ReturnsCorrectId()
+    public void GetPlayerId_WhenCalled_ReturnsCorrectId()
     {
         // Arrange
         var playerId = 2;
@@ -31,11 +31,11 @@ internal class PlayerTests
         var retrievedId = player.GetPlayerId();
 
         // Assert
-        Assert.That(retrievedId, Is.EqualTo(playerId), "Retrieved ID should match the expected ID.");
+        Assert.That(retrievedId, Is.EqualTo(playerId), "Should return correct player ID.");
     }
 
     [Test]
-    public void GetPlayerName_ReturnsCorrectName()
+    public void GetPlayerName_WhenCalled_ReturnsCorrectName()
     {
         // Arrange
         var playerId = 3;
@@ -46,6 +46,6 @@ internal class PlayerTests
         var retrievedName = player.GetPlayerName();
 
         // Assert
-        Assert.That(retrievedName, Is.EqualTo(playerName), "Retrieved name should match the expected name.");
+        Assert.That(retrievedName, Is.EqualTo(playerName), "Should return correct player name.");
     }
 }

@@ -16,13 +16,13 @@ internal class PawnTests
         var pawn = new Pawn(pawnId, initialTile, associatedPlayer);
 
         // Assert
-        Assert.That(pawn.GetPawnId(), Is.EqualTo(pawnId), "Pawn ID should match.");
-        Assert.That(pawn.GetOccupiedTile(), Is.EqualTo(initialTile), "Occupied tile should match.");
-        Assert.That(pawn.GetAssociatedPlayer(), Is.EqualTo(associatedPlayer), "Associated player should match.");
+        Assert.That(pawn.GetPawnId(), Is.EqualTo(pawnId), "Should create pawn with correct ID.");
+        Assert.That(pawn.GetOccupiedTile(), Is.EqualTo(initialTile), "Should create pawn on correct tile.");
+        Assert.That(pawn.GetAssociatedPlayer(), Is.EqualTo(associatedPlayer), "Should create pawn with correct player.");
     }
 
     [Test]
-    public void ChangeTile_ChangesSuccessfully()
+    public void ChangeTile_WhenCalled_ChangesSuccessfully()
     {
         // Arrange
         var pawnId = 1;
@@ -34,11 +34,11 @@ internal class PawnTests
         pawn.ChangeTile(newTile);
 
         // Assert
-        Assert.That(pawn.GetOccupiedTile(), Is.EqualTo(newTile), "Pawn should occupy the new tile.");
+        Assert.That(pawn.GetOccupiedTile(), Is.EqualTo(newTile), "Should change pawn's tile successfully.");
     }
 
     [Test]
-    public void SetAssociatedPlayer_SetsCorrectly()
+    public void SetAssociatedPlayer_WhenCalled_SetsCorrectly()
     {
         // Arrange
         var pawnId = 1;
@@ -50,11 +50,11 @@ internal class PawnTests
         pawn.SetAssociatedPlayer(associatedPlayer);
 
         // Assert
-        Assert.That(pawn.GetAssociatedPlayer(), Is.EqualTo(associatedPlayer), "Associated player should match.");
+        Assert.That(pawn.GetAssociatedPlayer(), Is.EqualTo(associatedPlayer), "Should set associated player correctly.");
     }
 
     [Test]
-    public void GetAssociatedPlayer_ReturnsCorrectPlayer()
+    public void GetAssociatedPlayer_WhenCalled_ReturnsCorrectPlayer()
     {
         // Arrange
         var pawnId = 1;
@@ -66,6 +66,6 @@ internal class PawnTests
         var retrievedPlayer = pawn.GetAssociatedPlayer();
 
         // Assert
-        Assert.That(retrievedPlayer, Is.EqualTo(associatedPlayer), "Retrieved player should match.");
+        Assert.That(retrievedPlayer, Is.EqualTo(associatedPlayer), "Should return correct associated player.");
     }
 }

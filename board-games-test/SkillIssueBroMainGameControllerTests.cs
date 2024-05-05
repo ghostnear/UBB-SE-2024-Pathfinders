@@ -3,6 +3,7 @@ using Moq;
 using BoardGames.Controller;
 using BoardGames.Model.CommonEntities;
 using BoardGames.Model.SkillIssueBroEntities;
+using System.Collections.Generic;
 
 [TestFixture]
 internal class SkillIssueBroMainGameControllerTests
@@ -27,7 +28,7 @@ internal class SkillIssueBroMainGameControllerTests
 
         // Act
         var pawns = controller.GetPawns();
-       
+
         // Assert
         Assert.That(pawns.Count, Is.EqualTo(8), "Should generate 8 pawns in total.");
         Assert.That(pawns[0].GetAssociatedPlayer(), Is.EqualTo(mockPlayers[0]), "First pawn should belong to Player1.");
@@ -35,7 +36,7 @@ internal class SkillIssueBroMainGameControllerTests
     }
 
     [Test]
-    public void RollDice_ReturnsDiceRoll()
+    public void RollDice_WhenCalled_ReturnsDiceRoll()
     {
         // Arrange
         var mockPlayers = new List<Player>
@@ -45,19 +46,18 @@ internal class SkillIssueBroMainGameControllerTests
 
         var controller = new SkillIssueBroGameController(mockPlayers);
 
-        var mockBoard = new Mock<GameBoard>();
-        var mockDice = new Mock<Dice>();
+        for(int i=0; i < 100; i++)
+        {
+            int diceRoll = controller.RollDice();
 
-        // Act
-        int diceRoll = controller.RollDice();
-
-        // Assert
-        Assert.That(diceRoll, Is.GreaterThan(0), "Dice roll should be more than 1.");
-        Assert.That(diceRoll, Is.LessThan(7), "Dice roll should be less than 6.");
+            Assert.That(diceRoll, Is.GreaterThan(0), "Dice roll should be more than 1.");
+            Assert.That(diceRoll, Is.LessThan(7), "Dice roll should be less than 6.");
+        }
+        
     }
 
     [Test]
-    public void MovePawn_PawnMovesSuccessfully()
+    public void MovePawn_WhenCalled_PawnMovesSuccessfully()
     {
         // Arrange
         var mockPlayers = new List<Player>
@@ -86,7 +86,7 @@ internal class SkillIssueBroMainGameControllerTests
     }
 
     [Test]
-    public void ChangeCurrentPlayer_ChangesCorrectly()
+    public void ChangeCurrentPlayer_WhenCalled_ChangesCorrectly()
     {
         // Arrange
         var mockPlayers = new List<Player>

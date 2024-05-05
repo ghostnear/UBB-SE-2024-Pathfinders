@@ -5,7 +5,7 @@ using BoardGames.Model.CommonEntities;
 internal class TileTests
 {
     [Test]
-    public void TileCreation_ValidInputs_CreatesCorrectly()
+    public void TileCreation_WithValidInputs_CreatesCorrectly()
     {
         // Arrange
         var tileId = 1;
@@ -16,13 +16,13 @@ internal class TileTests
         var tile = new Tile(tileId, centerX, centerY);
 
         // Assert
-        Assert.That(tile.GetTileId(), Is.EqualTo(tileId), "Tile ID should match.");
-        Assert.That(tile.GetCenterXPosition(), Is.EqualTo(centerX), "Tile's center X position should match.");
-        Assert.That(tile.GetCenterYPosition(), Is.EqualTo(centerY), "Tile's center Y position should match.");
+        Assert.That(tile.GetTileId(), Is.EqualTo(tileId), "Should create tile with correct ID.");
+        Assert.That(tile.GetCenterXPosition(), Is.EqualTo(centerX), "Should create tile with correct center X position.");
+        Assert.That(tile.GetCenterYPosition(), Is.EqualTo(centerY), "Should create tile with correct center Y position.");
     }
 
     [Test]
-    public void GetTileId_ReturnsCorrectId()
+    public void GetTileId_WhenCalled_ReturnsCorrectId()
     {
         // Arrange
         var tileId = 2;
@@ -34,11 +34,11 @@ internal class TileTests
         var retrievedId = tile.GetTileId();
 
         // Assert
-        Assert.That(retrievedId, Is.EqualTo(tileId), "Tile ID should match.");
+        Assert.That(retrievedId, Is.EqualTo(tileId), "Should return correct tile ID.");
     }
 
     [Test]
-    public void GetCenterXPosition_ReturnsCorrectX()
+    public void GetCenterXPosition_WhenCalled_ReturnsCorrectX()
     {
         // Arrange
         var tileId = 3;
@@ -50,11 +50,11 @@ internal class TileTests
         var retrievedX = tile.GetCenterXPosition();
 
         // Assert
-        Assert.That(retrievedX, Is.EqualTo(centerX), "Center X position should match.");
+        Assert.That(retrievedX, Is.EqualTo(centerX), "Should return correct center X position.");
     }
 
     [Test]
-    public void GetCenterYPosition_ReturnsCorrectY()
+    public void GetCenterYPosition_WhenCalled_ReturnsCorrectY()
     {
         // Arrange
         var tileId = 4;
@@ -66,6 +66,6 @@ internal class TileTests
         var retrievedY = tile.GetCenterYPosition();
 
         // Assert
-        Assert.That(retrievedY, Is.EqualTo(centerY), "Center Y position should match.");
+        Assert.That(retrievedY, Is.EqualTo(centerY), "Should return correct center Y position.");
     }
 }

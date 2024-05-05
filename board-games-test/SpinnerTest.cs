@@ -2,49 +2,52 @@
 using BoardGames.Model.GameOfLife;
 using System;
 
-namespace BoardGames.Tests.GameOfLife
+[TestFixture]
+public class SpinnerTests
 {
-    [TestFixture]
-    public class SpinnerTest
+    [Test]
+    public void Constructor_WhenCalled_InitializesRandomizer()
     {
-        [Test]
-        public void Constructor_WhenCalled_ShouldInitializeRandomizer()
+        // Arrange
+        var spinner = new Spinner();
+
+        // Assert
+        Assert.That(spinner, Is.Not.Null);
+    }
+
+    [Test]
+    public void RollSpinner_ReturnsValidResult()
+    {
+        // Arrange
+        var spinner = new Spinner();
+
+        // Act
+        int result = spinner.RollSpinner();
+
+        // Assert
+        Assert.That(result, Is.InRange(1, 10));
+    }
+
+    [Test]
+    public void RollSpinner_ReturnsCorrectResultBasedOnProbabilities()
+    {
+        // Arrange
+        var spinner = new Spinner();
+        int[] count = new int[10];
+
+        const int iterations = 100000;
+        for (int i = 0; i < iterations; i++)
         {
-            var spinner = new Spinner();
-
-            Assert.That(spinner, Is.Not.Null);
-        }
-
-        [Test]
-        public void RollSpinner_ShouldReturnValidResult()
-        {
-            var spinner = new Spinner();
-
             int result = spinner.RollSpinner();
-
-            Assert.That(result, Is.InRange(1, 10));
+            count[result - 1]++;
         }
 
-        [Test]
-        public void RollSpinner_ShouldReturnCorrectResultBasedOnProbabilities()
+        // Assert
+        for (int i = 0; i < count.Length; i++)
         {
-            // Arrange
-            var spinner = new Spinner();
-            int[] count = new int[10];
-
-            const int iterations = 100000;
-            for (int i = 0; i < iterations; i++)
-            {
-                int result = spinner.RollSpinner();
-                count[result - 1]++;
-            }
-
-            for (int i = 0; i < count.Length; i++)
-            {
-                double expectedProbability = Spinner.ResultProbabilitiesAsPercentages[i + 1] / 100.0;
-                double actualProbability = (double)count[i] / iterations;
-                Assert.That(actualProbability, Is.EqualTo(expectedProbability).Within(0.1));
-            }
+            double expectedProbability = Spinner.ResultProbabilitiesAsPercentages[i + 1] / 100.0;
+            double actualProbability = (double)count[i] / iterations;
+            Assert.That(actualProbability, Is.EqualTo(expectedProbability).Within(0.1));
         }
     }
 }
