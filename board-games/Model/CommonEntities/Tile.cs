@@ -1,6 +1,8 @@
-﻿namespace BoardGames.Model.CommonEntities
+﻿using Board_games.Model.Interfaces;
+
+namespace BoardGames.Model.CommonEntities
 {
-    public class Tile
+    public class Tile : ITile
     {
         private int id;
         private float centerPositionX;

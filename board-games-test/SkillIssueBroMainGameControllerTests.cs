@@ -4,6 +4,8 @@ using BoardGames.Controller;
 using BoardGames.Model.CommonEntities;
 using BoardGames.Model.SkillIssueBroEntities;
 using System.Collections.Generic;
+using Board_games.Model.Interfaces;
+using BoardGames.View.SkillIssueBro.Pawns;
 
 [TestFixture]
 internal class SkillIssueBroMainGameControllerTests
@@ -102,5 +104,131 @@ internal class SkillIssueBroMainGameControllerTests
 
         // Assert
         Assert.That(controller.GetCurrentPlayerColor(), Is.EqualTo("y"));
+    }
+
+    [Test]
+    public void DeterminePawnIdBasedOnColumnAndRow_PawnExists_ReturnsPawnId()
+    {
+        // Arrange
+        var mockPawn1 = new Mock<IPawn>();
+        mockPawn1.Setup(p => p.GetPawnId()).Returns(1);
+        var mockTile1 = new Mock<ITile>();
+        mockTile1.Setup(t => t.GetCenterXPosition()).Returns(1.0f);
+        mockTile1.Setup(t => t.GetCenterYPosition()).Returns(1.0f);
+        mockPawn1.Setup(p => p.GetOccupiedTile()).Returns(mockTile1.Object);
+
+        var mockPawn2 = new Mock<IPawn>();
+        mockPawn2.Setup(p => p.GetPawnId()).Returns(2);
+        var mockTile2 = new Mock<ITile>();
+        mockTile2.Setup(t => t.GetCenterXPosition()).Returns(2.0f);
+        mockTile2.Setup(t => t.GetCenterYPosition()).Returns(2.0f);
+        mockPawn2.Setup(p => p.GetOccupiedTile()).Returns(mockTile2.Object);
+
+        var mockGamePawns = new List<IPawn> { mockPawn1.Object, mockPawn2.Object };
+        var controller = new SkillIssueBroGameController(new List<Player>());
+
+        // Act
+        int pawnId = controller.DeterminePawnIdBasedOnColumnAndRow(1, 1);
+
+        // Assert
+        Assert.That(pawnId, Is.EqualTo(1), "Should return the pawn ID for the specified column and row.");
+    }
+
+    [Test]
+    public void DeterminePawnIdBasedOnColumnAndRow_PawnDoesNotExist_ReturnsMinusOne()
+    {
+        // Arrange
+        var mockPawn1 = new Mock<IPawn>();
+        mockPawn1.Setup(p => p.GetPawnId()).Returns(1);
+        var mockTile1 = new Mock<ITile>();
+        mockTile1.Setup(t => t.GetCenterXPosition()).Returns(1.0f);
+        mockTile1.Setup(t => t.GetCenterYPosition()).Returns(1.0f);
+        mockPawn1.Setup(p => p.GetOccupiedTile()).Returns(mockTile1.Object);
+
+        var mockPawn2 = new Mock<IPawn>();
+        mockPawn2.Setup(p => p.GetPawnId()).Returns(2);
+        var mockTile2 = new Mock<ITile>();
+        mockTile2.Setup(t => t.GetCenterXPosition()).Returns(2.0f);
+        mockTile2.Setup(t => t.GetCenterYPosition()).Returns(2.0f);
+        mockPawn2.Setup(p => p.GetOccupiedTile()).Returns(mockTile2.Object);
+
+        var mockGamePawns = new List<IPawn> { mockPawn1.Object, mockPawn2.Object };
+        var controller = new SkillIssueBroGameController(new List<Player>
+        {
+             new Player(1, "Player1"),
+              new Player(2, "Player2")
+        });
+
+        // Act
+        int pawnId = controller.DeterminePawnIdBasedOnColumnAndRow(3, 3);
+
+        // Assert
+        Assert.That(pawnId,Is.EqualTo(-1), "Should return -1 when no pawn exists for the specified column and row.");
+    }
+    [Test]
+    public void FindEmptyHomeTileInRange_NoOccupiedTilesInRange_ReturnsTile()
+    {
+        // Arrange
+        var mockTile1 = new Mock<ITile>();
+        mockTile1.Setup(t => t.GetTileId()).Returns(1);
+
+        var mockTile2 = new Mock<ITile>();
+        mockTile2.Setup(t => t.GetTileId()).Returns(2);
+
+        var mockTile3 = new Mock<ITile>();
+        mockTile3.Setup(t => t.GetTileId()).Returns(3);
+
+        var mockTile4 = new Mock<ITile>();
+        mockTile4.Setup(t => t.GetTileId()).Returns(4);
+
+        var mockGameTiles = new List<ITile> { mockTile1.Object, mockTile2.Object, mockTile3.Object, mockTile4.Object };
+        var mockGamePawns = new List<Pawn>
+        {
+            new Pawn(1, mockTile3.Object, new Player(1, "Player1"))
+        };
+        var controller = new SkillIssueBroGameController(new List<Player>
+        {
+             new Player(1, "Player1"),
+              new Player(2, "Player2")
+        });
+        controller.SetPawns(mockGamePawns);
+
+        // Act
+        Tile emptyTile = controller.FindEmptyHomeTileInRange(5, 10);
+
+        // Assert
+        Assert.That(mockTile1.Object, Is.EqualTo(emptyTile), "Should return the first empty tile within the specified range.");
+    }
+
+    [Test]
+    public void FindEmptyHomeTileInRange_AllTilesOccupiedInRange_ThrowsException()
+    {
+        // Arrange
+        var mockTile1 = new Mock<ITile>();
+        mockTile1.Setup(t => t.GetTileId()).Returns(1);
+
+        var mockTile2 = new Mock<ITile>();
+        mockTile2.Setup(t => t.GetTileId()).Returns(2);
+
+        var mockTile3 = new Mock<ITile>();
+        mockTile3.Setup(t => t.GetTileId()).Returns(3);
+
+        var mockTile4 = new Mock<ITile>();
+        mockTile4.Setup(t => t.GetTileId()).Returns(4);
+
+        var mockGameTiles = new List<ITile> { mockTile1.Object, mockTile2.Object, mockTile3.Object, mockTile4.Object };
+        
+        var controller = new SkillIssueBroGameController(new List<Player>{new Player(1, "Player1"),
+            new Player(2, "Player2") });
+        var mockGamePawns = new List<Pawn>
+        {
+            new Pawn(1, mockTile3.Object, new Player(1, "Player1"))
+        };
+        controller.SetPawns(mockGamePawns);
+
+
+        // Act and Assert
+        Assert.Throws<Exception>(() => controller.FindEmptyHomeTileInRange(1, 4),
+            "Should throw an exception when all tiles within the specified range are occupied.");
     }
 }

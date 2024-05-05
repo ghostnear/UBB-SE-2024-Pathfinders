@@ -7,6 +7,7 @@ using BoardGames.Controller;
 using BoardGames.Model.CommonEntities;
 using BoardGames.View.SkillIssueBro.Dice;
 using BoardGames.View.SkillIssueBro.Pawns;
+using Board_games.Model.Interfaces;
 
 namespace BoardGames.View.SkillIssueBro.Board
 {
@@ -237,13 +238,13 @@ namespace BoardGames.View.SkillIssueBro.Board
             // blue and yellow spawned regardless
             for (int i = 0; i < 4; i++)
             {
-                Tile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
+                ITile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
                 gameBoard.AddBluePawn((int)occupiedTile.GetCenterXPosition(), (int)occupiedTile.GetCenterYPosition());
             }
 
             for (int i = 4; i < 8; i++)
             {
-                Tile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
+                ITile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
                 gameBoard.AddYellowPawn((int)occupiedTile.GetCenterXPosition(), (int)occupiedTile.GetCenterYPosition());
             }
 
@@ -252,7 +253,7 @@ namespace BoardGames.View.SkillIssueBro.Board
             {
                 for (int i = 8; i < 12; i++)
                 {
-                    Tile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
+                    ITile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
                     gameBoard.AddGreenPawn((int)occupiedTile.GetCenterXPosition(), (int)occupiedTile.GetCenterYPosition());
                 }
             }
@@ -261,7 +262,7 @@ namespace BoardGames.View.SkillIssueBro.Board
             {
                 for (int i = 12; i < 16; i++)
                 {
-                    Tile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
+                    ITile occupiedTile = pawnsToSpawn[i].GetOccupiedTile();
                     gameBoard.AddRedPawn((int)occupiedTile.GetCenterXPosition(), (int)occupiedTile.GetCenterYPosition());
                 }
             }

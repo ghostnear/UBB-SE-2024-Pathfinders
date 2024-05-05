@@ -1,5 +1,6 @@
 ﻿using BoardGames.Model.CommonEntities;
 using BoardGames.Model.SkillIssueBroEntities;
+using Board_games.Model.Interfaces;
 
 namespace BoardGames.Controller
 {
@@ -430,11 +431,11 @@ namespace BoardGames.Controller
             return playerIndex;
         }
 
-        private int DeterminePawnIdBasedOnColumnAndRow(int column, int row)
+        public int DeterminePawnIdBasedOnColumnAndRow(int column, int row)
         {
             foreach (Pawn pawn in gamePawns)
             {
-                Tile occupiedTile = pawn.GetOccupiedTile();
+                ITile occupiedTile = pawn.GetOccupiedTile();
                 if (occupiedTile.GetCenterXPosition() == column && occupiedTile.GetCenterYPosition() == row)
                 {
                     return pawn.GetPawnId();
@@ -443,12 +444,12 @@ namespace BoardGames.Controller
             return -1;
         }
 
-        private Tile FindEmptyHomeTileInRange(int minId, int maxId)
+        public Tile FindEmptyHomeTileInRange(int minId, int maxId)
         {
             List<int> occupiedTiles = new List<int>();
             foreach (Pawn pawn in gamePawns)
             {
-                Tile occupiedTile = pawn.GetOccupiedTile();
+                ITile occupiedTile = pawn.GetOccupiedTile();
                 occupiedTiles.Add(occupiedTile.GetTileId());
             }
 

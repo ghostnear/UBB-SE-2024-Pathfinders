@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using BoardGames.Model.CommonEntities;
+using Moq;
 
 [TestFixture]
 internal class PawnTests
@@ -7,34 +8,32 @@ internal class PawnTests
     [Test]
     public void PawnCreation_ValidInputs_CreatesCorrectly()
     {
-        // Arrange
         var pawnId = 1;
-        var initialTile = new Tile(1, 1.0f, 1.0f);
-        var associatedPlayer = new Player(1, "Player One");
+        var mockTile = new Mock<Tile>(1, 1.0f, 1.0f); // Mocking the Tile object
+        var mockPlayer = new Mock<Player>(1, "Player One"); // Mocking the Player object
 
-        // Act
-        var pawn = new Pawn(pawnId, initialTile, associatedPlayer);
+        var pawn = new Pawn(pawnId, mockTile.Object, mockPlayer.Object);
 
-        // Assert
         Assert.That(pawn.GetPawnId(), Is.EqualTo(pawnId), "Should create pawn with correct ID.");
-        Assert.That(pawn.GetOccupiedTile(), Is.EqualTo(initialTile), "Should create pawn on correct tile.");
-        Assert.That(pawn.GetAssociatedPlayer(), Is.EqualTo(associatedPlayer), "Should create pawn with correct player.");
+        Assert.That(pawn.GetOccupiedTile(), Is.EqualTo(mockTile.Object), "Should create pawn on correct tile.");
+        Assert.That(pawn.GetAssociatedPlayer(), Is.EqualTo(mockPlayer.Object), "Should create pawn with correct player.");
     }
+
 
     [Test]
     public void ChangeTile_WhenCalled_ChangesSuccessfully()
     {
         // Arrange
         var pawnId = 1;
-        var initialTile = new Tile(1, 1.0f, 1.0f);
-        var newTile = new Tile(2, 2.0f, 2.0f);
-        var pawn = new Pawn(pawnId, initialTile);
+        var mockInitialTile = new Mock<Tile>(1, 1.0f, 1.0f);
+        var mockNewTile = new Mock<Tile>(2, 2.0f, 2.0f);
+        var pawn = new Pawn(pawnId, mockInitialTile.Object);
 
         // Act
-        pawn.ChangeTile(newTile);
+        pawn.ChangeTile(mockNewTile.Object);
 
         // Assert
-        Assert.That(pawn.GetOccupiedTile(), Is.EqualTo(newTile), "Should change pawn's tile successfully.");
+        Assert.That(pawn.GetOccupiedTile(), Is.EqualTo(mockNewTile.Object), "Should change pawn's tile successfully.");
     }
 
     [Test]
@@ -42,15 +41,15 @@ internal class PawnTests
     {
         // Arrange
         var pawnId = 1;
-        var initialTile = new Tile(1, 1.0f, 1.0f);
-        var associatedPlayer = new Player(1, "Player One");
-        var pawn = new Pawn(pawnId, initialTile);
+        var initialTile = new Mock<Tile>(1, 1.0f, 1.0f);
+        var associatedPlayer = new Mock<Player>(1, "Player One");
+        var pawn = new Pawn(pawnId, initialTile.Object);
 
         // Act
-        pawn.SetAssociatedPlayer(associatedPlayer);
+        pawn.SetAssociatedPlayer(associatedPlayer.Object);
 
         // Assert
-        Assert.That(pawn.GetAssociatedPlayer(), Is.EqualTo(associatedPlayer), "Should set associated player correctly.");
+        Assert.That(pawn.GetAssociatedPlayer(), Is.EqualTo(associatedPlayer.Object), "Should set associated player correctly.");
     }
 
     [Test]
@@ -58,14 +57,14 @@ internal class PawnTests
     {
         // Arrange
         var pawnId = 1;
-        var initialTile = new Tile(1, 1.0f, 1.0f);
-        var associatedPlayer = new Player(1, "Player One");
-        var pawn = new Pawn(pawnId, initialTile, associatedPlayer);
+        var initialTile = new Mock<Tile>(1, 1.0f, 1.0f);
+        var associatedPlayer = new Mock<Player>(1, "Player One");
+        var pawn = new Pawn(pawnId, initialTile.Object, associatedPlayer.Object);
 
         // Act
         var retrievedPlayer = pawn.GetAssociatedPlayer();
 
         // Assert
-        Assert.That(retrievedPlayer, Is.EqualTo(associatedPlayer), "Should return correct associated player.");
+        Assert.That(retrievedPlayer, Is.EqualTo(associatedPlayer.Object), "Should return correct associated player.");
     }
 }
