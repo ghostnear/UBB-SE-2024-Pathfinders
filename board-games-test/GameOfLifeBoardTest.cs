@@ -25,9 +25,12 @@ namespace BoardGames.Tests.GameOfLife
         {
             var gameOfLifeBoard = new GameOfLifeBoard();
 
-            int result = gameOfLifeBoard.SpinSpinner();
+            for(int i = 0; i < 100; i++)
+            {
+                int result = gameOfLifeBoard.SpinSpinner();
 
-            Assert.That(result, Is.InRange(1, 6)); 
+                Assert.That(result, Is.InRange(1, 10));
+            }
         }
 
         [Test]
