@@ -431,7 +431,7 @@ namespace BoardGames.Controller
         {
             foreach (Pawn pawn in gamePawns)
             {
-                Tile occupiedTile = pawn.GetOccupiedTile();
+                ITile occupiedTile = (ITile)pawn.GetOccupiedTile();
                 if (occupiedTile.GetCenterXPosition() == column && occupiedTile.GetCenterYPosition() == row)
                 {
                     return pawn.GetPawnId();
@@ -445,7 +445,7 @@ namespace BoardGames.Controller
             List<int> occupiedTiles = new List<int>();
             foreach (Pawn pawn in gamePawns)
             {
-                Tile occupiedTile = pawn.GetOccupiedTile();
+                ITile occupiedTile = (ITile)pawn.GetOccupiedTile();
                 occupiedTiles.Add(occupiedTile.GetTileId());
             }
 

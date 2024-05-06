@@ -4,6 +4,7 @@
     {
         private int id;
         private string name;
+        public List<Pawn> Pawns { get; set; } = new List<Pawn>();
 
         public Player(int playerId, string playerName)
         {
